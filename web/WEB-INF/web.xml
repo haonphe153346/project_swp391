@@ -12,6 +12,10 @@
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>controller.login.RegisterController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>medicineController</servlet-name>
+        <servlet-class>Controllerr.medicineController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>medicineController</servlet-name>
+        <url-pattern>/medicine</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
