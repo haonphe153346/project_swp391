@@ -643,7 +643,7 @@
         <div id="topbar" class="d-flex align-items-center fixed-top">
             <div class="container d-flex justify-content-between">
                 <div class="contact-info d-flex align-items-center">
-                    <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
+                    <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">Children's Care@fpt.edu.vn</a>
                     <i class="bi bi-phone"></i> +1 5589 55488 55
                 </div>
                 <div class="d-none d-lg-flex social-links align-items-center">
@@ -730,25 +730,25 @@
                         </div>
 
                         <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-                            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-                            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
-
+                            <h3>Welcome Children's Care System.</h3>
+                            <p>Your child deserves quality education from the start! The quality of child care has a direct impact on a child’s ability to learn, to build healthy relationships, and to become the best they can be.
+                            </p>
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-fingerprint"></i></div>
                                 <h4 class="title"><a href="">24/7</a></h4>
-                                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                                <p class="description">Always takes care your children anytime, anywhere.</p>
                             </div>
 
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-gift"></i></div>
                                 <h4 class="title"><a href="">Best Services</a></h4>
-                                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                                <p class="description">A team of prestigious and top quality doctors from Eastern Laos, Cambodia, Thailand, Malaysia...</p>
                             </div>
 
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-atom"></i></div>
                                 <h4 class="title"><a href="">Very Cheap</a></h4>
-                                <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                                <p class="description">Don't worry about price. Here we have discount to 70% and sometimes free for broken children.</p>
                             </div>
 
                         </div>
@@ -803,7 +803,7 @@
             <section id="services" class="features">
                 <div class="container" data-aos="fade-up">
                     <div class="section-title">
-                        <h2>Services</h2>
+                        <h2>All Services</h2>
                         <p>There are many servies in Children's Care</p>
                     </div>
                     <ul class="nav nav-tabs row gy-4 d-flex">
@@ -846,7 +846,7 @@
                         <li class="nav-item col-6 col-md-4 col-lg-2">
                             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-6">
                                 <i class="bi bi-map color-orange"></i>
-                                <h4>Hô Hấp</h4>
+                                <h4>Face</h4>
                             </a>
                         </li><!-- End Tab 6 Nav -->
 
@@ -858,7 +858,42 @@
                             <div class="row gy-4">
                                 <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
                                     <h3>Kiểm tra mắt</h3>
-                                                                        </br>
+                                    </br>
+
+                                    <p>
+                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum
+                                    </p>
+                                    <p class="fst-italic">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua.
+                                    </p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">ĐAU MẮT ĐỎ</a></li>
+                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">ĐAU GIÁC MẠC </a></li>
+                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">VIÊM MẮT</a></li>
+                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">MẮT SƯNG</a></li>
+                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">More...</a></li>
+
+                                    </ul>
+                                    <div class="text-center mt-auto">
+                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                                    <img src="assets/img/blog-1.jpg" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div><!-- End Tab Content 1 -->
+
+                        <div class="tab-pane" id="tab-2">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 order-2 order-lg-1">
+                                    </br>
+
+                                    <h3>Kiểm tra tay</h3>
+                                    </br>
 
                                     <p>
                                         Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
@@ -877,43 +912,10 @@
                                     </ul>
                                     <div class="text-center mt-auto">
                                         <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                </div>
-                                </div>
-                                <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                                    <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div><!-- End Tab Content 1 -->
-
-                        <div class="tab-pane" id="tab-2">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 order-2 order-lg-1">
-                                                                        </br>
-
-                                    <h3>Kiểm tra tay</h3>
-                                    </br>
-                                                        
-                                    <p>
-                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum
-                                    </p>
-                                    <p class="fst-italic">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                    <ul>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                                    </ul>
-<div class="text-center mt-auto">
-                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4 order-1 order-lg-2 text-center">
-                                    
+
                                     <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
                                 </div>
                             </div>
@@ -939,7 +941,7 @@
                                     </p>
                                     <div class="text-center mt-auto">
                                         <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4 order-1 order-lg-2 text-center">
                                     <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
@@ -967,7 +969,7 @@
                                     </ul>
                                     <div class="text-center mt-auto">
                                         <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4 order-1 order-lg-2 text-center">
                                     <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
@@ -995,7 +997,7 @@
                                     </ul>
                                     <div class="text-center mt-auto">
                                         <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4 order-1 order-lg-2 text-center">
                                     <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
@@ -1023,14 +1025,14 @@
                                     </ul>
                                     <div class="text-center mt-auto">
                                         <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4 order-1 order-lg-2 text-center">
                                     <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
                                 </div>
                             </div>
                         </div><!-- End Tab Content 6 -->
-                        
+
                     </div>
 
                 </div>
@@ -1042,7 +1044,7 @@
 
                     <div class="section-title">
                         <h2>HOT SERVICES</h2>
-                        <p>There are many servies in Children's Care</p>
+                        <p>There are best services people usually buy.</p>
                     </div>
 
                     <div class="row gy-4">
@@ -1052,6 +1054,7 @@
 
                                 <div class="pricing-header">
                                     <h3>Eyes</h3>
+                                    </br>
                                     <h4><sup>$</sup>0<span>3̶̶9̶̶9̶$</span></h4>
                                 </div>
 
@@ -1073,7 +1076,9 @@
                             <div class="pricing-item">
 
                                 <div class="pricing-header">
-                                    <h3>Miệng</h3>
+                                    <h3>Hand</h3>
+                                    </br>
+
                                     <h4><sup>$</sup>299$<span> 3̶̶9̶̶9̶$</span></h4>
                                 </div>
 
@@ -1095,7 +1100,9 @@
                             <div class="pricing-item">
 
                                 <div class="pricing-header">
-                                    <h3>Tay</h3>
+                                    <h3>Lungs</h3>
+                                    </br>
+
                                     <h4><sup>$</sup>4.999<span> 5̶̶9̶̶9̶$</span></h4>
                                 </div>
 
@@ -1118,6 +1125,8 @@
 
                                 <div class="pricing-header">
                                     <h3>Full Services</h3>
+                                    </br>
+
                                     <h4><sup>$</sup>6.999<span> 3̶̶9̶̶9̶$</span></h4>
                                 </div>
 
@@ -1138,7 +1147,7 @@
                             </div>
                         </div><!-- End Pricing Item -->
 
-                        
+
 
                     </div>
 
@@ -1146,7 +1155,7 @@
             </section><!-- End Pricing Section -->
 
 
- <!-- ======= Recent Blog Posts Section ======= -->
+            <!-- ======= Recent Blog Posts Section ======= -->
             <section id="blogs" class="recent-blog-posts">
 
                 <div class="container" data-aos="fade-up">
@@ -1165,12 +1174,12 @@
                                     <span class="post-date">Tue, December 12</span>
                                     <span class="post-author"> / Julia Parker</span>
                                 </div>
-                                <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
-                                <p>Illum voluptas ab enim placeat. Adipisci enim velit nulla. Vel omnis laudantium. Asperiores eum ipsa est officiis. Modi cupiditate exercitationem qui magni est...</p>
+                                <h4 class="post-title">The Children’s Heart Center in March 2021.</h4>
+                                <p>Illum voluptas ab enim placeat. Adipisel omnis periores eum ipsa est officiis. Modi cupiditate exercitationem qui magni est...</p>
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
-
+                        <br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
@@ -1178,12 +1187,12 @@
                                     <span class="post-date">Fri, September 05</span>
                                     <span class="post-author"> / Mario Douglas</span>
                                 </div>
-                                <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
+                                <h4 class="post-title">Et repellendus molestiae qui est sed omnis</h4>
                                 <p>Voluptatem nesciunt omnis libero autem tempora enim ut ipsam id. Odit quia ab eum assumenda. Quisquam omnis aliquid necessitatibus tempora consectetur doloribus...</p>
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
-
+<br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-5.jpg" class="img-fluid" alt=""></div>
@@ -1191,12 +1200,12 @@
                                     <span class="post-date">Tue, July 27</span>
                                     <span class="post-author"> / Lisa Hunter</span>
                                 </div>
-                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
                                 <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
-
+<br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
@@ -1204,11 +1213,12 @@
                                     <span class="post-date">Tue, July 27</span>
                                     <span class="post-author"> / Lisa Hunter</span>
                                 </div>
-                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
                                 <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
+<br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
@@ -1216,11 +1226,12 @@
                                     <span class="post-date">Tue, July 27</span>
                                     <span class="post-author"> / Lisa Hunter</span>
                                 </div>
-                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
                                 <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
+<br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-5.jpg" class="img-fluid" alt=""></div>
@@ -1228,7 +1239,7 @@
                                     <span class="post-date">Tue, July 27</span>
                                     <span class="post-author"> / Lisa Hunter</span>
                                 </div>
-                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
                                 <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
@@ -1240,7 +1251,7 @@
                                     <span class="post-date">Tue, July 27</span>
                                     <span class="post-author"> / Lisa Hunter</span>
                                 </div>
-                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
                                 <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
@@ -1252,7 +1263,7 @@
                                     <span class="post-date">Tue, July 27</span>
                                     <span class="post-author"> / Lisa Hunter</span>
                                 </div>
-                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
                                 <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
@@ -1264,12 +1275,12 @@
                 </br>
                 </br>
                 </br>
-                 <div class="text-center mt-auto">
-                                        <a href="Blogs" class="buy-btn"><h5>MORE BLOGS ...</h5></a>
-                                </div>
+                <div class="text-center mt-auto">
+                    <a href="Blogs" class="buy-btn"><h5>MORE BLOGS ...</h5></a>
+                </div>
             </section><!-- End Recent Blog Posts Section -->
 
-          
+
 
             <!-- ======= Doctors Section ======= -->
             <section id="doctors" class="doctors">
@@ -1277,7 +1288,7 @@
 
                     <div class="section-title">
                         <h2>Doctors</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <p>A team of professional doctors with many achievements and research awards with Master's and Doctoral degrees from all over Southeast Asia such as Eastern Laos, Cambodia, Thailand, Malaysia,... high quality stars with a great team of technicians.</p>
                     </div>
 
                     <div class="row">
@@ -1286,9 +1297,9 @@
                             <div class="member d-flex align-items-start">
                                 <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
                                 <div class="member-info">
-                                    <h4>Walter White</h4>
+                                    <h4>Bác sĩ Hào</h4>
                                     <span>Chief Medical Officer</span>
-                                    <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                                    <p>TOP 5 Bác sĩ chuyên khoa phổi hàng đầu thế giới.</p>
                                     <div class="social">
                                         <a href=""><i class="ri-twitter-fill"></i></a>
                                         <a href=""><i class="ri-facebook-fill"></i></a>
@@ -1303,9 +1314,9 @@
                             <div class="member d-flex align-items-start">
                                 <div class="pic"><img src="assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
                                 <div class="member-info">
-                                    <h4>Sarah Jhonson</h4>
+                                    <h4>Bác sĩ Khoa</h4>
                                     <span>Anesthesiologist</span>
-                                    <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                                    <p>TOP 5 Bác sĩ cứu người giỏi nhất châu Á.</p>
                                     <div class="social">
                                         <a href=""><i class="ri-twitter-fill"></i></a>
                                         <a href=""><i class="ri-facebook-fill"></i></a>
@@ -1320,7 +1331,7 @@
                             <div class="member d-flex align-items-start">
                                 <div class="pic"><img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
                                 <div class="member-info">
-                                    <h4>William Anderson</h4>
+                                    <h4>Bác sĩ Hoàn</h4>
                                     <span>Cardiology</span>
                                     <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
                                     <div class="social">
@@ -1337,7 +1348,7 @@
                             <div class="member d-flex align-items-start">
                                 <div class="pic"><img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
                                 <div class="member-info">
-                                    <h4>Amanda Jepson</h4>
+                                    <h4>Bác sĩ Trường</h4>
                                     <span>Neurosurgeon</span>
                                     <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
                                     <div class="social">
@@ -1351,23 +1362,23 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
             </section><!-- End Doctors Section -->
 
-            
-           
-           
 
 
- <!-- ======= Testimonials Section ======= -->
+
+
+
+            <!-- ======= Testimonials Section ======= -->
             <section id="testimonials" class="testimonials">
                 <div class="container">
                     <div class="container">
 
                         <div class="section-title">
                             <h2>Feedback About Children's Care</h2>
-                            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                            <p>There are some random feedback about services of Children's Care System, Thanks every body so much for love their system.</p>
                         </div>
                     </div>
                     <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
