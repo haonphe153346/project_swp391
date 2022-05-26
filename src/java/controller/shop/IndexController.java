@@ -56,7 +56,13 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //1. Services Category
         
+        //2. Services List
+        
+        //3. Hot Services
+        
+        //4. Feedback
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

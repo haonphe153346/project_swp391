@@ -30,126 +30,604 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
         <style>
-            
-/*--------------------------------------------------------------
-# Team
+
+            /*--------------------------------------------------------------
+            # Team
+            --------------------------------------------------------------*/
+            .team .member {
+                margin-bottom: 20px;
+                overflow: hidden;
+                text-align: center;
+                border-radius: 5px;
+                background: #fff;
+                box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+            }
+            .team .member .member-img {
+                position: relative;
+                overflow: hidden;
+            }
+            .team .member .social {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                height: 40px;
+                opacity: 0;
+                transition: ease-in-out 0.3s;
+                background: rgba(255, 255, 255, 0.85);
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .team .member .social a {
+                transition: color 0.3s;
+                color: #222222;
+                margin: 0 10px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .team .member .social a i {
+                line-height: 0;
+            }
+            .team .member .social a:hover {
+                color: #3498db;
+            }
+            .team .member .social i {
+                font-size: 18px;
+                margin: 0 2px;
+            }
+            .team .member .member-info {
+                padding: 25px 15px;
+            }
+            .team .member .member-info h4 {
+                font-weight: 700;
+                margin-bottom: 5px;
+                font-size: 18px;
+                color: #222222;
+            }
+            .team .member .member-info span {
+                display: block;
+                font-size: 13px;
+                font-weight: 400;
+                color: #aaaaaa;
+            }
+            .team .member .member-info p {
+                font-style: italic;
+                font-size: 14px;
+                line-height: 26px;
+                color: #777777;
+            }
+            .team .member:hover .social {
+                opacity: 1;
+            }
+            .col-2dot4, // extra small
+            .col-sm-2dot4, // small
+            .col-md-2dot4, // medium
+            .col-lg-2dot4, // large
+            .col-xl-2dot4 { // extra large
+                            position: relative;
+                            width: 100%;
+                            min-height: 1px;
+                            padding-right: 15px;
+                            padding-left: 15px;
+            }
+            .col-2dot4 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 20%;
+                flex: 0 0 20%;
+                max-width: 20%;
+            }
+            @media (min-width: 540px) {
+                .col-sm-2dot4 {
+                    -webkit-box-flex: 0;
+                    -ms-flex: 0 0 20%;
+                    flex: 0 0 20%;
+                    max-width: 20%;
+                }
+            }
+            @media (min-width: 720px) {
+                .col-md-2dot4 {
+                    -webkit-box-flex: 0;
+                    -ms-flex: 0 0 20%;
+                    flex: 0 0 20%;
+                    max-width: 20%;
+                }
+            }
+            @media (min-width: 960px) {
+                .col-lg-2dot4 {
+                    -webkit-box-flex: 0;
+                    -ms-flex: 0 0 20%;
+                    flex: 0 0 20%;
+                    max-width: 20%;
+                }
+            }
+            @media (min-width: 1140px) {
+                .col-xl-2dot4 {
+                    -webkit-box-flex: 0;
+                    -ms-flex: 0 0 20%;
+                    flex: 0 0 20%;
+                    max-width: 20%;
+                }
+            }
+            /*--------------------------------------------------------------
+            # Featured Services Section
+            --------------------------------------------------------------*/
+            .featured-services .service-item {
+                padding: 30px;
+                transition: all ease-in-out 0.4s;
+                background: var(--color-white);
+                height: 100%;
+            }
+            .featured-services .service-item .icon {
+                margin-bottom: 10px;
+            }
+            .featured-services .service-item .icon i {
+                color: var(--color-primary);
+                font-size: 36px;
+                transition: 0.3s;
+            }
+            .featured-services .service-item h4 {
+                font-weight: 600;
+                margin-bottom: 15px;
+                font-size: 24px;
+            }
+            .featured-services .service-item h4 a {
+                color: var(--color-secondary);
+                transition: ease-in-out 0.3s;
+            }
+            .featured-services .service-item p {
+                line-height: 24px;
+                font-size: 14px;
+                margin-bottom: 0;
+            }
+            .featured-services .service-item:hover {
+                transform: translateY(-10px);
+                box-shadow: 0px 0 60px 0 rgba(var(--color-secondary-rgb), 0.1);
+            }
+            .featured-services .service-item:hover h4 a {
+                color: var(--color-primary);
+            }
+
+            /*--------------------------------------------------------------
+            # About Section
+            --------------------------------------------------------------*/
+            .about .about-img {
+                position: relative;
+                margin: 60px 0 0 60px;
+            }
+            .about .about-img:before {
+                position: absolute;
+                inset: -60px 0 0 -60px;
+                z-index: -1;
+                content: "";
+                background: url("../img/about-bg.png") top left;
+                background-repeat: no-repeat;
+            }
+            @media (max-width: 575px) {
+                .about .about-img {
+                    margin: 30px 0 0 30px;
+                }
+                .about .about-img:before {
+                    inset: -30px 0 0 -30px;
+                }
+            }
+            .about h3 {
+                color: var(--color-secondary);
+                font-family: var(--font-secondary);
+                font-weight: 300;
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+            @media (max-width: 768px) {
+                .about h3 {
+                    font-size: 28px;
+                }
+            }
+            .about .nav-pills {
+                border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.2);
+            }
+            .about .nav-pills li + li {
+                margin-left: 40px;
+            }
+            .about .nav-link {
+                background: none;
+                font-size: 18px;
+                font-weight: 400;
+                color: var(--color-secondary);
+                padding: 12px 0;
+                margin-bottom: -2px;
+                border-radius: 0;
+                font-family: var(--font-secondary);
+            }
+            .about .nav-link.active {
+                color: var(--color-primary);
+                background: none;
+                border-bottom: 3px solid var(--color-primary);
+            }
+            @media (max-width: 575px) {
+                .about .nav-link {
+                    font-size: 16px;
+                }
+            }
+            .about .tab-content h4 {
+                font-size: 18px;
+                margin: 0;
+                font-weight: 700;
+                color: var(--color-secondary);
+            }
+            .about .tab-content i {
+                font-size: 22px;
+                line-height: 0;
+                margin-right: 8px;
+                color: var(--color-primary);
+            }
+
+            /*--------------------------------------------------------------
+            # Clients Section
+            --------------------------------------------------------------*/
+            .clients {
+                padding: 0 0 60px 0;
+            }
+            .clients .swiper-slide img {
+                opacity: 0.5;
+                transition: 0.3s;
+                filter: grayscale(100);
+            }
+            .clients .swiper-slide img:hover {
+                filter: none;
+                opacity: 1;
+            }
+            /*--------------------------------------------------------------
+            # Features Section
+            --------------------------------------------------------------*/
+            .features .nav-tabs {
+                border: 0;
+            }
+            .features .nav-link {
+                border: 0;
+                padding: 25px 20px;
+                color: #485664;
+                box-shadow: 5px 5px 25px rgba(72, 86, 100, 0.15);
+                border-radius: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                transition: 0s;
+                cursor: pointer;
+                height: 100%;
+            }
+            .features .nav-link i {
+                font-size: 32px;
+                line-height: 0;
+            }
+            .features .nav-link h4 {
+                font-size: 20px;
+                font-weight: 600;
+                margin: 10px 0 0 0;
+                color: var(--color-secondary);
+            }
+            .features .nav-link:hover {
+                color: var(--color-primary);
+            }
+            .features .nav-link.active {
+                transition: 0.3s;
+                background: var(--color-secondary) linear-gradient(rgba(var(--color-primary-rgb), 0.95), rgba(var(--color-primary-rgb), 0.6));
+                border-color: var(--color-primary);
+            }
+            .features .nav-link.active h4 {
+                color: var(--color-white);
+            }
+
+            .features .tab-content {
+                margin-top: 30px;
+            }
+            .features .tab-pane.active {
+                -webkit-animation: fadeIn 0.5s ease-out;
+                animation: fadeIn 0.5s ease-out;
+            }
+            .features .tab-pane h3 {
+                font-weight: 600;
+                font-size: 36px;
+                color: var(--color-secondary);
+            }
+            .features .tab-pane ul {
+                list-style: none;
+                padding: 0;
+            }
+            .features .tab-pane ul li {
+                padding-bottom: 10px;
+            }
+            .features .tab-pane ul i {
+                font-size: 24px;
+                margin-right: 4px;
+                color: var(--color-primary);
+            }
+            .features .tab-pane p:last-child {
+                margin-bottom: 0;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            /*--------------------------------------------------------------
+            # Services Section
+            --------------------------------------------------------------*/
+            .services .img {
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .services .img img {
+                transition: 0.6s;
+            }
+            .services .details {
+                padding: 50px 30px;
+                margin: -100px 30px 0 30px;
+                transition: all ease-in-out 0.3s;
+                background: var(--color-white);
+                position: relative;
+                background: rgba(var(--color-white-rgb), 0.9);
+                text-align: center;
+                border-radius: 8px;
+                box-shadow: 0px 0 25px rgba(var(--color-black-rgb), 0.1);
+            }
+            .services .details .icon {
+                margin: 0;
+                width: 72px;
+                height: 72px;
+                background: var(--color-primary);
+                border-radius: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                color: var(--color-white);
+                font-size: 28px;
+                transition: ease-in-out 0.3s;
+                position: absolute;
+                top: -36px;
+                left: calc(50% - 36px);
+                border: 6px solid var(--color-white);
+            }
+            .services .details h3 {
+                color: var(--color-default);
+                font-weight: 700;
+                margin: 10px 0 15px 0;
+                font-size: 22px;
+                transition: ease-in-out 0.3s;
+            }
+            .services .details p {
+                line-height: 24px;
+                font-size: 14px;
+                margin-bottom: 0;
+            }
+            .services .service-item:hover .details h3 {
+                color: var(--color-primary);
+            }
+            .services .service-item:hover .details .icon {
+                background: var(--color-white);
+                border: 2px solid var(--color-primary);
+            }
+            .services .service-item:hover .details .icon i {
+                color: var(--color-primary);
+            }
+            .services .service-item:hover .img img {
+                transform: scale(1.2);
+            }
+
+            /*--------------------------------------------------------------
+            # Testimonials Section
+            --------------------------------------------------------------*/
+            .testimonials {
+                padding: 80px 0;
+                background: url("../img/testimonials-bg.jpg") no-repeat;
+                background-position: center center;
+                background-size: cover;
+                position: relative;
+            }
+            .testimonials::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: rgba(var(--color-secondary-dark-rgb), 0.8);
+            }
+            .testimonials .section-header {
+                margin-bottom: 40px;
+            }
+            .testimonials .testimonials-carousel, .testimonials .testimonials-slider {
+                overflow: hidden;
+            }
+            .testimonials .testimonial-item {
+                text-align: center;
+                color: var(--color-white);
+            }
+            .testimonials .testimonial-item .testimonial-img {
+                width: 100px;
+                border-radius: 50%;
+                border: 6px solid rgba(var(--color-white-rgb), 0.15);
+                margin: 0 auto;
+            }
+            .testimonials .testimonial-item h3 {
+                font-size: 20px;
+                font-weight: bold;
+                margin: 10px 0 5px 0;
+                color: var(--color-white);
+            }
+            .testimonials .testimonial-item h4 {
+                font-size: 14px;
+                color: rgba(var(--color-white-rgb), 0.6);
+                margin: 0 0 15px 0;
+            }
+            .testimonials .testimonial-item .stars {
+                margin-bottom: 15px;
+            }
+            .testimonials .testimonial-item .stars i {
+                color: var(--color-yellow);
+                margin: 0 1px;
+            }
+            .testimonials .testimonial-item .quote-icon-left, .testimonials .testimonial-item .quote-icon-right {
+                color: rgba(var(--color-white-rgb), 0.6);
+                font-size: 26px;
+                line-height: 0;
+            }
+            .testimonials .testimonial-item .quote-icon-left {
+                display: inline-block;
+                left: -5px;
+                position: relative;
+            }
+            .testimonials .testimonial-item .quote-icon-right {
+                display: inline-block;
+                right: -5px;
+                position: relative;
+                top: 10px;
+                transform: scale(-1, -1);
+            }
+            .testimonials .testimonial-item p {
+                font-style: italic;
+                margin: 0 auto 15px auto;
+            }
+            .testimonials .swiper-pagination {
+                margin-top: 20px;
+                position: relative;
+            }
+            .testimonials .swiper-pagination .swiper-pagination-bullet {
+                width: 12px;
+                height: 12px;
+                background-color: rgba(var(--color-white-rgb), 0.4);
+                opacity: 0.5;
+            }
+            .testimonials .swiper-pagination .swiper-pagination-bullet-active {
+                background-color: var(--color-white);
+                opacity: 1;
+            }
+            @media (min-width: 992px) {
+                .testimonials .testimonial-item p {
+                    width: 80%;
+                }
+            }
+
+            .color-indigo{
+                color: #1769ff;
+            }
+            .color-cyan{
+                color: #fd7e14;
+            }
+            .color-teal{
+                color: #20c997;
+            }
+            .color-red{
+                color: red;
+            }
+            .color-blue{
+                color: #0d6efd;
+            }
+            .color-orange{
+                color: #fd7e14;
+            }
+            /*--------------------------------------------------------------
+# Pricing Section
 --------------------------------------------------------------*/
-.team .member {
-  margin-bottom: 20px;
-  overflow: hidden;
-  text-align: center;
-  border-radius: 5px;
-  background: #fff;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-}
-.team .member .member-img {
-  position: relative;
-  overflow: hidden;
-}
-.team .member .social {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 40px;
-  opacity: 0;
-  transition: ease-in-out 0.3s;
-  background: rgba(255, 255, 255, 0.85);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-.team .member .social a {
-  transition: color 0.3s;
-  color: #222222;
-  margin: 0 10px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-.team .member .social a i {
-  line-height: 0;
-}
-.team .member .social a:hover {
-  color: #3498db;
-}
-.team .member .social i {
-  font-size: 18px;
-  margin: 0 2px;
-}
-.team .member .member-info {
-  padding: 25px 15px;
-}
-.team .member .member-info h4 {
-  font-weight: 700;
-  margin-bottom: 5px;
-  font-size: 18px;
-  color: #222222;
-}
-.team .member .member-info span {
-  display: block;
-  font-size: 13px;
-  font-weight: 400;
-  color: #aaaaaa;
-}
-.team .member .member-info p {
-  font-style: italic;
-  font-size: 14px;
-  line-height: 26px;
-  color: #777777;
-}
-.team .member:hover .social {
-  opacity: 1;
-}
-.col-2dot4, // extra small
-.col-sm-2dot4, // small
-.col-md-2dot4, // medium
-.col-lg-2dot4, // large
-.col-xl-2dot4 { // extra large
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-.col-2dot4 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 20%;
-    flex: 0 0 20%;
-    max-width: 20%;
-}
-@media (min-width: 540px) {
-    .col-sm-2dot4 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
-    }
-}
-@media (min-width: 720px) {
-    .col-md-2dot4 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
-    }
-}
-@media (min-width: 960px) {
-    .col-lg-2dot4 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
-    }
-}
-@media (min-width: 1140px) {
-    .col-xl-2dot4 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 20%;
-        flex: 0 0 20%;
-        max-width: 20%;
-    }
-}
+            .pricing {
+                background: rgba(72, 86, 100, 0.04);
+            }
+            .pricing .pricing-item {
+                padding: 60px 40px;
+                box-shadow: 0 3px 20px -2px rgba(108, 117, 125, 0.15);
+                background: #ffffff;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                border: 4px solid ffffff;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .pricing .pricing-header {
+                background: linear-gradient(rgba( 72, 86, 100, 0.9), rgba(var(--color-secondary-rgb), 0.9)), url("../img/pricing-bg.jpg") center center;
+                background-size: cover;
+                text-align: center;
+                padding: 40px;
+                margin: -60px -40px 0;
+            }
+            .pricing h3 {
+                font-weight: 600;
+                margin-bottom: 5px;
+                font-size: 36px;
+                color: var(--color-white);
+            }
+            .pricing h4 {
+                font-size: 48px;
+                color: #000;
+                font-weight: 400;
+                font-family: 'Source Sans Pro', sans-serif;;
+                margin-bottom: 0;
+            }
+            .pricing h4 sup {
+                font-size: 28px;
+            }
+            .pricing h4 span {
+                color: #000;
+                font-size: 24px;
+            }
+            .pricing ul {
+                padding: 30px 0;
+                list-style: none;
+                color: #6c757d;
+                text-align: left;
+                line-height: 20px;
+            }
+            .pricing ul li {
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+            }
+            .pricing ul i {
+                color: #0ea2bd;
+                font-size: 36px;
+                padding-right: 3px;
+                line-height: 0;
+            }
+            .pricing ul .na {
+                color: rgba(108, 117, 125, 0.5);
+            }
+            .pricing ul .na i {
+                color: rgba(108, 117, 125, 0.5);
+                font-size: 24px;
+                padding-left: 4px;
+            }
+            .pricing ul .na span {
+                text-decoration: line-through;
+            }
+            .pricing .buy-btn {
+                display: inline-block;
+                padding: 12px 40px;
+                border-radius: 6px;
+                color: #0ea2bd;
+                transition: none;
+                font-size: 16px;
+                font-weight: 700;
+                transition: 0.3s;
+                border: 1px solid #0ea2bd;
+            }
+            .pricing .buy-btn:hover {
+                background: #0ea2bd;
+                color: #fff;
+            }
+            .pricing .featured {
+                border-color: #0ea2bd;
+            }
+            .pricing .featured .pricing-header {
+                background: linear-gradient(rgba(14, 162, 189), 0.9), rgba(14, 162, 189, 0.9)), url("../img/pricing-bg.jpg") center center;
+            }
+            .pricing .featured .buy-btn {
+                background: #0ea2bd;
+                color: #fff;
+            }
         </style>
         <!-- =======================================================
         * Template Name: Medilab - v4.7.1
@@ -240,58 +718,11 @@
 
         <main id="main">
 
-            <!-- ======= Why Us Section ======= -->
-            <section id="why-us" class="why-us">
-                <div class="container">
 
-                    <div class="row">
-                        <div class="col-lg-4 d-flex align-items-stretch">
-                            <div class="content">
-                                <h3>Why Choose Medilab?</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                                    Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-                                </p>
-                                <div class="text-center">
-                                    <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 d-flex align-items-stretch">
-                            <div class="icon-boxes d-flex flex-column justify-content-center">
-                                <div class="row">
-                                    <div class="col-xl-4 d-flex align-items-stretch">
-                                        <div class="icon-box mt-4 mt-xl-0">
-                                            <i class="bx bx-receipt"></i>
-                                            <h4>Uy Tín</h4>
-                                            <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 d-flex align-items-stretch">
-                                        <div class="icon-box mt-4 mt-xl-0">
-                                            <i class="bx bx-cube-alt"></i>
-                                            <h4>Nhanh</h4>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 d-flex align-items-stretch">
-                                        <div class="icon-box mt-4 mt-xl-0">
-                                            <i class="bx bx-images"></i>
-                                            <h4>24/7</h4>
-                                            <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- End .content-->
-                        </div>
-                    </div>
-
-                </div>
-            </section><!-- End Why Us Section -->
 
             <!-- ======= About Section ======= -->
             <section id="about" class="about">
-                <div class="container-fluid">
+                <div class="container">
 
                     <div class="row">
                         <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
@@ -304,19 +735,19 @@
 
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-fingerprint"></i></div>
-                                <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+                                <h4 class="title"><a href="">24/7</a></h4>
                                 <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
                             </div>
 
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-gift"></i></div>
-                                <h4 class="title"><a href="">Nemo Enim</a></h4>
+                                <h4 class="title"><a href="">Best Services</a></h4>
                                 <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
                             </div>
 
                             <div class="icon-box">
                                 <div class="icon"><i class="bx bx-atom"></i></div>
-                                <h4 class="title"><a href="">Dine Pad</a></h4>
+                                <h4 class="title"><a href="">Very Cheap</a></h4>
                                 <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
                             </div>
 
@@ -368,169 +799,477 @@
 
                 </div>
             </section><!-- End Counts Section -->
-
-            <!-- ======= Services Section ======= -->
-            <section id="services" class="services">
-                <div class="container">
-
+            <!-- ======= Features Section ======= -->
+            <section id="services" class="features">
+                <div class="container" data-aos="fade-up">
                     <div class="section-title">
                         <h2>Services</h2>
                         <p>There are many servies in Children's Care</p>
                     </div>
+                    <ul class="nav nav-tabs row gy-4 d-flex">
 
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-heartbeat"></i></div>
-                                <h4><a href="">Lorem Ipsum</a></h4>
-                                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                        <li class="nav-item col-6 col-md-4 col-lg-2">
+                            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                                <i class="bi bi-binoculars color-cyan"></i>
+                                <h4>Eyes</h4>
+                            </a>
+                        </li><!-- End Tab 1 Nav -->
+
+                        <li class="nav-item col-6 col-md-4 col-lg-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+                                <i class="bi bi-box-seam color-indigo"></i>
+                                <h4>Hands</h4>
+                            </a>
+                        </li><!-- End Tab 2 Nav -->
+
+                        <li class="nav-item col-6 col-md-4 col-lg-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+                                <i class="bi bi-brightness-high color-teal"></i>
+                                <h4>Lungs</h4>
+                            </a>
+                        </li><!-- End Tab 3 Nav -->
+
+                        <li class="nav-item col-6 col-md-4 col-lg-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+                                <i class="bi bi-command color-red"></i>
+                                <h4>Body</h4>
+                            </a>
+                        </li><!-- End Tab 4 Nav -->
+
+                        <li class="nav-item col-6 col-md-4 col-lg-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
+                                <i class="bi bi-easel color-blue"></i>
+                                <h4>Foot</h4>
+                            </a>
+                        </li><!-- End Tab 5 Nav -->
+
+                        <li class="nav-item col-6 col-md-4 col-lg-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-6">
+                                <i class="bi bi-map color-orange"></i>
+                                <h4>Hô Hấp</h4>
+                            </a>
+                        </li><!-- End Tab 6 Nav -->
+
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane active show" id="tab-1">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+                                    <h3>Kiểm tra mắt</h3>
+                                                                        </br>
+
+                                    <p>
+                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum
+                                    </p>
+                                    <p class="fst-italic">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua.
+                                    </p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                                    </ul>
+                                    <div class="text-center mt-auto">
+                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
+                                </div>
+                                </div>
+                                <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                                    <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
+                                </div>
                             </div>
-                        </div>
+                        </div><!-- End Tab Content 1 -->
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-pills"></i></div>
-                                <h4><a href="">Sed ut perspiciatis</a></h4>
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        <div class="tab-pane" id="tab-2">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 order-2 order-lg-1">
+                                                                        </br>
+
+                                    <h3>Kiểm tra tay</h3>
+                                    </br>
+                                                        
+                                    <p>
+                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum
+                                    </p>
+                                    <p class="fst-italic">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua.
+                                    </p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                                    </ul>
+<div class="text-center mt-auto">
+                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
+                                </div>
+                                </div>
+                                <div class="col-lg-4 order-1 order-lg-2 text-center">
+                                    
+                                    <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
+                                </div>
                             </div>
-                        </div>
+                        </div><!-- End Tab Content 2 -->
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-hospital-user"></i></div>
-                                <h4><a href="">Magni Dolores</a></h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                        <div class="tab-pane" id="tab-3">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 order-2 order-lg-1">
+                                    <h3>Pariatur</h3>
+                                    <p>
+                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum
+                                    </p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                                    </ul>
+                                    <p class="fst-italic">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua.
+                                    </p>
+                                    <div class="text-center mt-auto">
+                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
+                                </div>
+                                </div>
+                                <div class="col-lg-4 order-1 order-lg-2 text-center">
+                                    <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
+                                </div>
                             </div>
-                        </div>
+                        </div><!-- End Tab Content 3 -->
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-dna"></i></div>
-                                <h4><a href="">Nemo Enim</a></h4>
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                        <div class="tab-pane" id="tab-4">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 order-2 order-lg-1">
+                                    <h3>Nostrum</h3>
+                                    <p>
+                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum
+                                    </p>
+                                    <p class="fst-italic">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua.
+                                    </p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                                    </ul>
+                                    <div class="text-center mt-auto">
+                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
+                                </div>
+                                </div>
+                                <div class="col-lg-4 order-1 order-lg-2 text-center">
+                                    <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
+                                </div>
                             </div>
-                        </div>
+                        </div><!-- End Tab Content 4 -->
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-wheelchair"></i></div>
-                                <h4><a href="">Dele cardo</a></h4>
-                                <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+                        <div class="tab-pane" id="tab-5">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 order-2 order-lg-1">
+                                    <h3>Adipiscing</h3>
+                                    <p>
+                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum
+                                    </p>
+                                    <p class="fst-italic">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua.
+                                    </p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                                    </ul>
+                                    <div class="text-center mt-auto">
+                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
+                                </div>
+                                </div>
+                                <div class="col-lg-4 order-1 order-lg-2 text-center">
+                                    <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
+                                </div>
                             </div>
-                        </div>
+                        </div><!-- End Tab Content 5 -->
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box">
-                                <div class="icon"><i class="fas fa-notes-medical"></i></div>
-                                <h4><a href="">Divera don</a></h4>
-                                <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+                        <div class="tab-pane" id="tab-6">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 order-2 order-lg-1">
+                                    <h3>Reprehit</h3>
+                                    <p>
+                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum
+                                    </p>
+                                    <p class="fst-italic">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua.
+                                    </p>
+                                    <ul>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                                    </ul>
+                                    <div class="text-center mt-auto">
+                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
+                                </div>
+                                </div>
+                                <div class="col-lg-4 order-1 order-lg-2 text-center">
+                                    <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
+                                </div>
                             </div>
-                        </div>
-
+                        </div><!-- End Tab Content 6 -->
+                        
                     </div>
 
                 </div>
-            </section><!-- End Services Section -->
+            </section><!-- End Features Section -->
 
-
-
-            <!-- ======= Departments Section ======= -->
-            <section id="departments" class="departments">
-                <div class="container">
+            <!-- ======= Pricing Section ======= -->
+            <section id="hotservices" class="pricing">
+                <div class="container" data-aos="fade-up">
 
                     <div class="section-title">
-                        <h2>About Services</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <h2>HOT SERVICES</h2>
+                        <p>There are many servies in Children's Care</p>
                     </div>
 
                     <div class="row gy-4">
-                        <div class="col-lg-3">
-                            <ul class="nav nav-tabs flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Cardiology</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Neurology</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Hepatology</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Pediatrics</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Eye Care</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-9">
-                            <div class="tab-content">
-                                <div class="tab-pane active show" id="tab-1">
-                                    <div class="row gy-4">
-                                        <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Cardiology</h3>
-                                            <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                                            <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-                                        </div>
-                                        <div class="col-lg-4 text-center order-1 order-lg-2">
-                                            <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
-                                        </div>
-                                    </div>
+
+                        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="pricing-item">
+
+                                <div class="pricing-header">
+                                    <h3>Eyes</h3>
+                                    <h4><sup>$</sup>0<span>3̶̶9̶̶9̶$</span></h4>
                                 </div>
-                                <div class="tab-pane" id="tab-2">
-                                    <div class="row gy-4">
-                                        <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Et blanditiis nemo veritatis excepturi</h3>
-                                            <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                                            <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
-                                        </div>
-                                        <div class="col-lg-4 text-center order-1 order-lg-2">
-                                            <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
-                                        </div>
-                                    </div>
+
+                                <ul>
+                                    <li><i class="bi bi-dot"></i> <span>Kiểm tra độ cận thị </span></li>
+                                    <li><i class="bi bi-dot"></i> <span>Miễn Phí Thuốc Nhỏ Mắt</span></li>
+                                    <li><i class="bi bi-dot"></i> <span>Miễn Phí Khám Cận Thị</span></li>
+                                    <li class="na"><i class="bi bi-x"></i> <span>không được dùng dịch vụ luxury</span></li>
+                                    <li class="na"><i class="bi bi-x"></i> <span>được chăm sóc bởi bác sĩ mới vào nghề</span></li>
+                                </ul>
+
+                                <div class="text-center mt-auto">
+                                    <a href="#" class="buy-btn">Buy Now</a>
                                 </div>
-                                <div class="tab-pane" id="tab-3">
-                                    <div class="row gy-4">
-                                        <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
-                                            <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
-                                            <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
-                                        </div>
-                                        <div class="col-lg-4 text-center order-1 order-lg-2">
-                                            <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tab-4">
-                                    <div class="row gy-4">
-                                        <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
-                                            <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
-                                            <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
-                                        </div>
-                                        <div class="col-lg-4 text-center order-1 order-lg-2">
-                                            <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tab-5">
-                                    <div class="row gy-4">
-                                        <div class="col-lg-8 details order-2 order-lg-1">
-                                            <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
-                                            <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
-                                            <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
-                                        </div>
-                                        <div class="col-lg-4 text-center order-1 order-lg-2">
-                                            <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
-                        </div>
+                        </div><!-- End Pricing Item -->
+                        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="pricing-item">
+
+                                <div class="pricing-header">
+                                    <h3>Miệng</h3>
+                                    <h4><sup>$</sup>299$<span> 3̶̶9̶̶9̶$</span></h4>
+                                </div>
+
+                                <ul>
+                                    <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
+                                    <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
+                                    <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</span></li>
+                                    <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                    <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                                </ul>
+
+                                <div class="text-center mt-auto">
+                                    <a href="#" class="buy-btn">Buy Now</a>
+                                </div>
+
+                            </div>
+                        </div><!-- End Pricing Item -->
+                        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="pricing-item">
+
+                                <div class="pricing-header">
+                                    <h3>Tay</h3>
+                                    <h4><sup>$</sup>4.999<span> 5̶̶9̶̶9̶$</span></h4>
+                                </div>
+
+                                <ul>
+                                    <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
+                                    <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
+                                    <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</span></li>
+                                    <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                    <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                                </ul>
+
+                                <div class="text-center mt-auto">
+                                    <a href="#" class="buy-btn">Buy Now</a>
+                                </div>
+
+                            </div>
+                        </div><!-- End Pricing Item -->
+                        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="pricing-item featured">
+
+                                <div class="pricing-header">
+                                    <h3>Full Services</h3>
+                                    <h4><sup>$</sup>6.999<span> 3̶̶9̶̶9̶$</span></h4>
+                                </div>
+
+                                <ul>
+                                    <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
+                                    <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
+                                    <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</spa>
+                                    </li>
+                                    <li><i class="bi bi-dot"></i> <span>Pharetra massa massa ultricies</spa>
+                                    </li>
+                                    <li><i class="bi bi-dot"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                                </ul>
+
+                                <div class="text-center mt-auto">
+                                    <a href="#" class="buy-btn">Buy Now</a>
+                                </div>
+
+                            </div>
+                        </div><!-- End Pricing Item -->
+
+                        
+
                     </div>
 
                 </div>
-            </section><!-- End Departments Section -->
+            </section><!-- End Pricing Section -->
+
+
+ <!-- ======= Recent Blog Posts Section ======= -->
+            <section id="blogs" class="recent-blog-posts">
+
+                <div class="container" data-aos="fade-up">
+
+                    <div class="section-title">
+                        <h2>Blogs</h2>
+                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                            <div class="post-box">
+                                <div class="post-img"><img src="assets/img/departments-2.jpg" class="img-fluid" alt=""></div>
+                                <div class="meta">
+                                    <span class="post-date">Tue, December 12</span>
+                                    <span class="post-author"> / Julia Parker</span>
+                                </div>
+                                <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
+                                <p>Illum voluptas ab enim placeat. Adipisci enim velit nulla. Vel omnis laudantium. Asperiores eum ipsa est officiis. Modi cupiditate exercitationem qui magni est...</p>
+                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                            <div class="post-box">
+                                <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
+                                <div class="meta">
+                                    <span class="post-date">Fri, September 05</span>
+                                    <span class="post-author"> / Mario Douglas</span>
+                                </div>
+                                <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
+                                <p>Voluptatem nesciunt omnis libero autem tempora enim ut ipsam id. Odit quia ab eum assumenda. Quisquam omnis aliquid necessitatibus tempora consectetur doloribus...</p>
+                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                            <div class="post-box">
+                                <div class="post-img"><img src="assets/img/departments-5.jpg" class="img-fluid" alt=""></div>
+                                <div class="meta">
+                                    <span class="post-date">Tue, July 27</span>
+                                    <span class="post-author"> / Lisa Hunter</span>
+                                </div>
+                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
+                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                            <div class="post-box">
+                                <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
+                                <div class="meta">
+                                    <span class="post-date">Tue, July 27</span>
+                                    <span class="post-author"> / Lisa Hunter</span>
+                                </div>
+                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
+                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                            <div class="post-box">
+                                <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
+                                <div class="meta">
+                                    <span class="post-date">Tue, July 27</span>
+                                    <span class="post-author"> / Lisa Hunter</span>
+                                </div>
+                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
+                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                            <div class="post-box">
+                                <div class="post-img"><img src="assets/img/departments-5.jpg" class="img-fluid" alt=""></div>
+                                <div class="meta">
+                                    <span class="post-date">Tue, July 27</span>
+                                    <span class="post-author"> / Lisa Hunter</span>
+                                </div>
+                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
+                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                            <div class="post-box">
+                                <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
+                                <div class="meta">
+                                    <span class="post-date">Tue, July 27</span>
+                                    <span class="post-author"> / Lisa Hunter</span>
+                                </div>
+                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
+                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                            <div class="post-box">
+                                <div class="post-img"><img src="assets/img/departments-1.jpg" class="img-fluid" alt=""></div>
+                                <div class="meta">
+                                    <span class="post-date">Tue, July 27</span>
+                                    <span class="post-author"> / Lisa Hunter</span>
+                                </div>
+                                <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
+                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                </br>
+                </br>
+                </br>
+                 <div class="text-center mt-auto">
+                                        <a href="Blogs" class="buy-btn"><h5>MORE BLOGS ...</h5></a>
+                                </div>
+            </section><!-- End Recent Blog Posts Section -->
+
+          
 
             <!-- ======= Doctors Section ======= -->
             <section id="doctors" class="doctors">
@@ -612,73 +1351,16 @@
                         </div>
 
                     </div>
-
+                    
                 </div>
             </section><!-- End Doctors Section -->
 
-            <!-- ======= Frequently Asked Questions Section ======= -->
-            <section id="faq" class="faq section-bg">
-                <div class="container">
+            
+           
+           
 
-                    <div class="section-title">
-                        <h2>Frequently Asked Questions</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                    </div>
 
-                    <div class="faq-list">
-                        <ul>
-                            <li data-aos="fade-up">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                                    <p>
-                                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li data-aos="fade-up" data-aos-delay="100">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                                    <p>
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li data-aos="fade-up" data-aos-delay="200">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                                    <p>
-                                        Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li data-aos="fade-up" data-aos-delay="300">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                                    <p>
-                                        Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li data-aos="fade-up" data-aos-delay="400">
-                                <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                                    <p>
-                                        Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                                    </p>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                </div>
-            </section><!-- End Frequently Asked Questions Section -->
-
-            <!-- ======= Testimonials Section ======= -->
+ <!-- ======= Testimonials Section ======= -->
             <section id="testimonials" class="testimonials">
                 <div class="container">
                     <div class="container">
@@ -773,88 +1455,6 @@
 
                 </div>
             </section><!-- End Testimonials Section -->
-
-            <!-- ======= Gallery Section ======= -->
-            <section id="gallery" class="gallery">
-                <div class="container">
-
-                    <div class="section-title">
-                        <h2>Blogs</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                    </div>
-                </div>
-
-                <div class="container-fluid">
-                    <div class="row g-0">
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="gallery-item">
-                                <a href="assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
-                                    <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section><!-- End Gallery Section -->
 
             <!-- ======= Team Section ======= -->
             <section id="team" class="team section-bg">
@@ -960,76 +1560,7 @@
                 </div>
             </section><!-- End Team Section -->
 
-            <!-- ======= Contact Section ======= -->
-            <section id="contact" class="contact">
-                <div class="container">
 
-                    <div class="section-title">
-                        <h2>Send Feedback</h2>
-                        <p>If you have any question? Contact US NOW</p>
-                    </div>
-                </div>
-
-
-
-                <div class="container">
-                    <div class="row mt-5">
-
-                        <div class="col-lg-4">
-                            <div class="info">
-                                <div class="address">
-                                    <i class="bi bi-geo-alt"></i>
-                                    <h4>Location:</h4>
-                                    <p>Đại Học FPT Hà Nội, Thạch Hòa, Thạch Thất.</p>
-                                </div>
-
-                                <div class="email">
-                                    <i class="bi bi-envelope"></i>
-                                    <h4>Email:</h4>
-                                    <p>info@example.com</p>
-                                </div>
-
-                                <div class="phone">
-                                    <i class="bi bi-phone"></i>
-                                    <h4>Call:</h4>
-                                    <p>+1 5589 55488 55s</p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-8 mt-5 mt-lg-0">
-
-                            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                                <div class="row">
-                                    <div class="col-md-6 form-group">
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                                    </div>
-                                    <div class="col-md-6 form-group mt-3 mt-md-0">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                                    </div>
-                                </div>
-                                <div class="form-group mt-3">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                                </div>
-                                <div class="form-group mt-3">
-                                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                                </div>
-                                <div class="my-3">
-                                    <div class="loading">Loading</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                                </div>
-                                <div class="text-center"><button type="submit">Send Message</button></div>
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </section><!-- End Contact Section -->
 
         </main><!-- End #main -->
 
