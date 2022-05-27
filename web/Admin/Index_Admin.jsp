@@ -11,7 +11,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Children's Care Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -364,7 +364,7 @@
                             </td>
                             <td>
                               <img src="assets/images/faces/face1.jpg" alt="image" />
-                              <span class="pl-2">Henry Klein</span>
+                              <span class="pl-2">Hello, Admin</span>
                             </td>
                             <td> 02312 </td>
                             <td> $14,500 </td>
