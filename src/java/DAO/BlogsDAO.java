@@ -11,25 +11,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.category;
+import model.blog;
 import model.service;
-
 
 /**
  *
- * @author win
+ * @author admin
  */
-public class CategoryDAO {
-    public List<category> getAllCategory() {
-        List<category> list = new ArrayList<>();
+public class BlogsDAO {
+    public List<blog> getBlogsIndexNew() {
+        List<blog> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
-            String sql = "select * from [category]";
+            String sql = "select * from blogs order by blog_created_date";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                 category cate = new category(rs.getInt("category_id"), rs.getString("category_name"), rs.getString("icon"));
-                 list.add(cate);
+                blog blog = new  blog(rs.getInt("blog_id"), rs.getInt("user_id"), rs.getString("title"), rs.getString("bi"), rs.getDate("blog_created_date"), rs.getInt("category_id"), rs.getString("detail"), rs.getString("blog_image"), rs.getBoolean("view_able"));
+                list.add(blog);
             }
             return list;
         } catch (Exception e) {
@@ -37,8 +36,7 @@ public class CategoryDAO {
         return null;
     }
     public static void main(String[] args) {
-        CategoryDAO ser = new CategoryDAO();
-        List<category> list = ser.getAllCategory();
-        System.out.println(list.get(0).getIcon());
+        BlogsDAO ser = new BlogsDAO();
+        
     }
 }

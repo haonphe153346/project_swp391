@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.shop;
+package Controllerr;
 
-import DAO.BlogsDAO;
-import DAO.CategoryDAO;
-import DAO.ServicesDAO;
-import DAO.SliderDAO;
+import DAO.RoleDAO;
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,16 +14,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.blog;
-import model.category;
-import model.service;
-import model.slider;
+import model.user;
+import model.userRole;
 
 /**
  *
- * @author admin
+ * @author win
  */
-public class IndexController extends HttpServlet {
+public class UserDetailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +40,10 @@ public class IndexController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet IndexController</title>");            
+            out.println("<title>Servlet UserDetailServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet IndexController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserDetailServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,31 +61,31 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //1. Slider
-            SliderDAO sliderDAO = new SliderDAO();
-            List<slider> sliderList = sliderDAO.getAllSlider();
-            request.setAttribute("sliderList", sliderList);
-        //2. Services Category
-            CategoryDAO categoryDAO = new CategoryDAO();
-            List<category> categoryList = categoryDAO.getAllCategory();
-            request.setAttribute("categoryList", categoryList);
-        //3. All Service
-            ServicesDAO servicesDAO = new ServicesDAO();
-            List<service> serviceList = servicesDAO.getAllServices();
-            request.setAttribute("serviceList", serviceList);
-        //4. Hot Services
-              
-        //5. Blogs
-            BlogsDAO blogDAO = new BlogsDAO();
-            List<blog> blogList = blogDAO.getBlogsIndexNew();
-            request.setAttribute("blogList", blogList);
-        //6. Feedback
+        int id = Integer.parseInt(request.getParameter("user_id"));
+        String func = request.getParameter("function");
+        user user = new UserDAO().getUserById(id);
+        List<userRole> list_role = new RoleDAO().getAllRole();
+        String role = "";
+        for (int i = 0; i < list_role.size(); i++) {
+            if (user.getUser_role() == list_role.get(i).getRole_id()) {
+                role = list_role.get(i).getRole_name();
+            }
+        }
+        if (user != null) {
+            request.setAttribute("user", user);
+            request.setAttribute("role", role);
+            request.setAttribute("list_role", list_role);
+        }
+        request.setAttribute("user_id", id);
+        if(func.equals("edit")){
+            request.getRequestDispatcher("userDetail.jsp").forward(request, response);
+        }
+        else{
+            request.getRequestDispatcher("ViewUser.jsp").forward(request, response);
+        }
         
-       
-            
-          request.getRequestDispatcher("index.jsp").forward(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -101,7 +97,33 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id = Integer.parseInt(request.getParameter("user_id"));
+        user user = new UserDAO().getUserById(id);
+        List<userRole> list_role = new RoleDAO().getAllRole();
+        if (request.getParameter("role")!=null) {
+            int role_raw = Integer.parseInt(request.getParameter("role").toString());
+            user.setUser_role(role_raw);
+        }
+        if (request.getParameter("status") != null) {
+            int status_raw = Integer.parseInt(request.getParameter("status").toString());
+            boolean status = true;
+            if (status_raw == 0) {
+                status = false;
+            }
+            user.setUser_status(status);
+        }
+        String role = "";
+        for (int i = 0; i < list_role.size(); i++) {
+            if (user.getUser_role() == list_role.get(i).getRole_id()) {
+                role = list_role.get(i).getRole_name();
+            }
+        }
+        new UserDAO().EditUser(user);
+        request.setAttribute("user_id", id);
+        request.setAttribute("user", user);
+        request.setAttribute("list_role", list_role);
+        request.setAttribute("role", role);
+        request.getRequestDispatcher("userDetail.jsp").forward(request, response);
     }
 
     /**

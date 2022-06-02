@@ -44,6 +44,6 @@
       </nav><!-- .navbar -->
 
       <a href="login" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Login</a>
-
+      <a href="user_profile"><i class="bi bi-person-lines-fill fa-2x"></i></a>
     </div>
   </header>

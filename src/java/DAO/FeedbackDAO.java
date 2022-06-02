@@ -11,25 +11,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.category;
-import model.service;
-
+import model.medicine;
 
 /**
  *
- * @author win
+ * @author admin
  */
-public class CategoryDAO {
-    public List<category> getAllCategory() {
-        List<category> list = new ArrayList<>();
+public class FeedbackDAO {
+    public List<medicine> getAllMedicine() {
+        List<medicine> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
-            String sql = "select * from [category]";
+            String sql = "select * from [medicine]";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                 category cate = new category(rs.getInt("category_id"), rs.getString("category_name"), rs.getString("icon"));
-                 list.add(cate);
+                medicine m = new medicine(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6));
+                list.add(m);
             }
             return list;
         } catch (Exception e) {
@@ -37,8 +35,8 @@ public class CategoryDAO {
         return null;
     }
     public static void main(String[] args) {
-        CategoryDAO ser = new CategoryDAO();
-        List<category> list = ser.getAllCategory();
-        System.out.println(list.get(0).getIcon());
+        MedicineDAO m = new MedicineDAO();
+        List<medicine> list = m.getAllMedicine();
+        System.out.println(list.get(0).getMedicine_name());
     }
 }

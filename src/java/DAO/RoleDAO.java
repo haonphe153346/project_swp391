@@ -11,34 +11,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.category;
-import model.service;
-
+import model.userRole;
 
 /**
  *
  * @author win
  */
-public class CategoryDAO {
-    public List<category> getAllCategory() {
-        List<category> list = new ArrayList<>();
+public class RoleDAO {
+    public List<userRole> getAllRole() {
+        List<userRole> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
-            String sql = "select * from [category]";
+            String sql = "select * from [role]";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                 category cate = new category(rs.getInt("category_id"), rs.getString("category_name"), rs.getString("icon"));
-                 list.add(cate);
+                userRole role = new userRole(rs.getInt(1), rs.getString(2));
+                list.add(role);
             }
             return list;
         } catch (Exception e) {
         }
         return null;
-    }
-    public static void main(String[] args) {
-        CategoryDAO ser = new CategoryDAO();
-        List<category> list = ser.getAllCategory();
-        System.out.println(list.get(0).getIcon());
     }
 }

@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.shop;
+package Controllerr;
 
-import DAO.BlogsDAO;
-import DAO.CategoryDAO;
-import DAO.ServicesDAO;
-import DAO.SliderDAO;
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,16 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.blog;
-import model.category;
-import model.service;
-import model.slider;
+import model.user;
 
 /**
  *
- * @author admin
+ * @author win
  */
-public class IndexController extends HttpServlet {
+public class UserProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,6 +30,8 @@ public class IndexController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    String user_image = "";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -44,10 +40,10 @@ public class IndexController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet IndexController</title>");            
+            out.println("<title>Servlet UserProfileServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet IndexController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserProfileServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,31 +61,14 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //1. Slider
-            SliderDAO sliderDAO = new SliderDAO();
-            List<slider> sliderList = sliderDAO.getAllSlider();
-            request.setAttribute("sliderList", sliderList);
-        //2. Services Category
-            CategoryDAO categoryDAO = new CategoryDAO();
-            List<category> categoryList = categoryDAO.getAllCategory();
-            request.setAttribute("categoryList", categoryList);
-        //3. All Service
-            ServicesDAO servicesDAO = new ServicesDAO();
-            List<service> serviceList = servicesDAO.getAllServices();
-            request.setAttribute("serviceList", serviceList);
-        //4. Hot Services
-              
-        //5. Blogs
-            BlogsDAO blogDAO = new BlogsDAO();
-            List<blog> blogList = blogDAO.getBlogsIndexNew();
-            request.setAttribute("blogList", blogList);
-        //6. Feedback
-        
-       
-            
-          request.getRequestDispatcher("index.jsp").forward(request, response);
+        user user = new UserDAO().getUserById(14);
+        user_image = user.getUser_image();
+        if (user != null) {
+            request.setAttribute("user", user);
+        }
+        request.getRequestDispatcher("edituser.jsp").forward(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -101,7 +80,29 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        user user = new UserDAO().getUserById(14);
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String email = request.getParameter("email");
+        String image = request.getParameter("image");
+        if (new UserDAO().checkPhone(phone) == false) {
+            String errPhone = "Phone number is Invalid!";
+            request.setAttribute("errPhone", errPhone);
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("edituser.jsp").forward(request, response);
+        } else {
+            int gender_raw = Integer.parseInt(request.getParameter("gender"));
+            boolean gender = true;
+            if (gender_raw == 0) {
+                gender = false;
+            }
+            user edit = new user(user.getUser_id(), name, gender, user.getUser_address(), user.getUser_password(), email, phone, user.getUser_role(), user.isUser_status(), image);
+            new UserDAO().EditUser(edit);
+            user user_new = new UserDAO().getUserById(14);
+            request.setAttribute("user", user_new);
+            request.getRequestDispatcher("edituser.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -113,5 +114,4 @@ public class IndexController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

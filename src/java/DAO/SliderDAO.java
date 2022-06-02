@@ -11,25 +11,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.category;
 import model.service;
-
+import model.slider;
 
 /**
  *
- * @author win
+ * @author admin
  */
-public class CategoryDAO {
-    public List<category> getAllCategory() {
-        List<category> list = new ArrayList<>();
+public class SliderDAO {
+    public List<slider> getAllSlider() {
+        List<slider> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
-            String sql = "select * from [category]";
+            String sql = "select * from slider";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                 category cate = new category(rs.getInt("category_id"), rs.getString("category_name"), rs.getString("icon"));
-                 list.add(cate);
+            while (rs.next()) { 
+                slider sli = new slider(rs.getInt("slider_id"), rs.getString("slider_title"), rs.getInt("category_id"), rs.getBoolean("slider_status"));
+                list.add(sli);
             }
             return list;
         } catch (Exception e) {
@@ -37,8 +36,8 @@ public class CategoryDAO {
         return null;
     }
     public static void main(String[] args) {
-        CategoryDAO ser = new CategoryDAO();
-        List<category> list = ser.getAllCategory();
-        System.out.println(list.get(0).getIcon());
+        SliderDAO ser = new SliderDAO();
+        List<slider> list = ser.getAllSlider();
+        System.out.println(list.get(0).getSlider_title());
     }
 }

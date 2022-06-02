@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.shop;
+package Controllerr;
 
-import DAO.BlogsDAO;
-import DAO.CategoryDAO;
-import DAO.ServicesDAO;
-import DAO.SliderDAO;
+import DAO.RoleDAO;
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,16 +14,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.blog;
-import model.category;
-import model.service;
-import model.slider;
+import javax.servlet.http.HttpSession;
+import model.user;
+import model.userRole;
 
 /**
  *
- * @author admin
+ * @author win
  */
-public class IndexController extends HttpServlet {
+public class UserListServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +41,10 @@ public class IndexController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet IndexController</title>");            
+            out.println("<title>Servlet UserListServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet IndexController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserListServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,31 +62,30 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //1. Slider
-            SliderDAO sliderDAO = new SliderDAO();
-            List<slider> sliderList = sliderDAO.getAllSlider();
-            request.setAttribute("sliderList", sliderList);
-        //2. Services Category
-            CategoryDAO categoryDAO = new CategoryDAO();
-            List<category> categoryList = categoryDAO.getAllCategory();
-            request.setAttribute("categoryList", categoryList);
-        //3. All Service
-            ServicesDAO servicesDAO = new ServicesDAO();
-            List<service> serviceList = servicesDAO.getAllServices();
-            request.setAttribute("serviceList", serviceList);
-        //4. Hot Services
-              
-        //5. Blogs
-            BlogsDAO blogDAO = new BlogsDAO();
-            List<blog> blogList = blogDAO.getBlogsIndexNew();
-            request.setAttribute("blogList", blogList);
-        //6. Feedback
-        
-       
-            
-          request.getRequestDispatcher("index.jsp").forward(request, response);
+        UserDAO u = new UserDAO();
+        int page = 1;
+        HttpSession session = request.getSession();
+        session.removeAttribute("role");
+        session.removeAttribute("sort");
+        session.removeAttribute("status");
+        session.removeAttribute("gender");
+        List<userRole> list_role = new RoleDAO().getAllRole();
+        if(request.getParameter("page") != null){
+            page = Integer.parseInt(request.getParameter("page"));
+        }
+        int maxPage = u.countTotalUser()/8;
+        if(maxPage % u.countTotalUser() != 0){
+            maxPage += 1;
+        }
+        List<user> list_user = u.listUserWithPagging(page);
+        request.setAttribute("page", page);
+        request.setAttribute("maxPage", maxPage);
+        request.setAttribute("list_role", list_role);
+        request.setAttribute("list_user", list_user);
+        request.setAttribute("path", "home");
+        request.getRequestDispatcher("UserList.jsp").forward(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -101,7 +97,6 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

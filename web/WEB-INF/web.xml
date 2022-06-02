@@ -32,6 +32,62 @@
         <servlet-name>medicineController</servlet-name>
         <url-pattern>/medicine</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UserProfileServlet</servlet-name>
+        <servlet-class>Controllerr.UserProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserDetailServlet</servlet-name>
+        <servlet-class>Controllerr.UserDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewUser</servlet-name>
+        <servlet-class>Controllerr.AddNewUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserListServlet</servlet-name>
+        <servlet-class>Controllerr.UserListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterUserServlet</servlet-name>
+        <servlet-class>Controllerr.FilterUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexController</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>medicineController</servlet-name>
+        <url-pattern>/medicine</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserProfileServlet</servlet-name>
+        <url-pattern>/user_profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserDetailServlet</servlet-name>
+        <url-pattern>/user_detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewUser</servlet-name>
+        <url-pattern>/add_new_user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserListServlet</servlet-name>
+        <url-pattern>/userlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterUserServlet</servlet-name>
+        <url-pattern>/filteruser</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -807,59 +808,62 @@
                         <p>There are many servies in Children's Care</p>
                     </div>
                     <ul class="nav nav-tabs row gy-4 d-flex">
-
-                        <li class="nav-item col-6 col-md-4 col-lg-2">
-                            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                                <i class="bi bi-binoculars color-cyan"></i>
-                                <h4>Eyes</h4>
+                        
+                        <c:forEach items="${requestScope.categoryList}" var="cate">
+                            <li class="nav-item col-6 col-md-4 col-lg-2">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-${cate.category_id}">
+                                <i class="${cate.icon}"></i>
+                                <h4>${cate.category_name}</h4>
                             </a>
                         </li><!-- End Tab 1 Nav -->
+                        </c:forEach>
+                        
 
-                        <li class="nav-item col-6 col-md-4 col-lg-2">
+<!--                        <li class="nav-item col-6 col-md-4 col-lg-2">
                             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
                                 <i class="bi bi-box-seam color-indigo"></i>
                                 <h4>Hands</h4>
                             </a>
-                        </li><!-- End Tab 2 Nav -->
+                        </li> End Tab 2 Nav 
 
                         <li class="nav-item col-6 col-md-4 col-lg-2">
                             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
                                 <i class="bi bi-brightness-high color-teal"></i>
                                 <h4>Lungs</h4>
                             </a>
-                        </li><!-- End Tab 3 Nav -->
+                        </li> End Tab 3 Nav 
 
                         <li class="nav-item col-6 col-md-4 col-lg-2">
                             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
                                 <i class="bi bi-command color-red"></i>
                                 <h4>Body</h4>
                             </a>
-                        </li><!-- End Tab 4 Nav -->
+                        </li> End Tab 4 Nav 
 
                         <li class="nav-item col-6 col-md-4 col-lg-2">
                             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
                                 <i class="bi bi-easel color-blue"></i>
                                 <h4>Foot</h4>
                             </a>
-                        </li><!-- End Tab 5 Nav -->
+                        </li> End Tab 5 Nav 
 
                         <li class="nav-item col-6 col-md-4 col-lg-2">
                             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-6">
                                 <i class="bi bi-map color-orange"></i>
                                 <h4>Face</h4>
                             </a>
-                        </li><!-- End Tab 6 Nav -->
+                        </li> End Tab 6 Nav -->
 
                     </ul>
 
                     <div class="tab-content">
-
-                        <div class="tab-pane active show" id="tab-1">
+                        
+                        <c:forEach items="${requestScope.serviceList}" var="service">
+                           <div class="tab-pane active show" id="tab-1">
                             <div class="row gy-4">
                                 <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
                                     <h3>Kiểm tra mắt</h3>
                                     </br>
-
                                     <p>
                                         Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
                                         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
@@ -885,7 +889,9 @@
                                     <img src="assets/img/blog-1.jpg" alt="" class="img-fluid">
                                 </div>
                             </div>
-                        </div><!-- End Tab Content 1 -->
+                        </div><!-- End Tab Content 1 --> 
+                        </c:forEach>
+                        
 
                         <div class="tab-pane" id="tab-2">
                             <div class="row gy-4">
@@ -1166,20 +1172,24 @@
                     </div>
 
                     <div class="row">
-
-                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                        <c:forEach items="${requestScope.blogList}" var="blog">
+                            <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
                             <div class="post-box">
-                                <div class="post-img"><img src="assets/img/departments-2.jpg" class="img-fluid" alt=""></div>
+                                <div class="post-img"><img src="assets/img/${blog.blog_image}" class="img-fluid" alt=""></div>
                                 <div class="meta">
-                                    <span class="post-date">Tue, December 12</span>
-                                    <span class="post-author"> / Julia Parker</span>
+                                    <span class="post-date">${blog.blog_created_date}</span>
+                                    <span class="post-author"> / ${blog.user_id}</span>
                                 </div>
-                                <h4 class="post-title">The Children’s Heart Center in March 2021.</h4>
-                                <p>Illum voluptas ab enim placeat. Adipisel omnis periores eum ipsa est officiis. Modi cupiditate exercitationem qui magni est...</p>
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                                <h4 class="post-title">${blog.title}</h4>
+                                <p>${blog.bi}</p>
+                                <a href="blog-details?id=${blog.blog_id}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                         <br>
+                        
+                        </c:forEach>
+                        
+                        
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
@@ -1192,7 +1202,7 @@
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
-<br>
+                        <br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-5.jpg" class="img-fluid" alt=""></div>
@@ -1205,7 +1215,7 @@
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
-<br>
+                        <br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
@@ -1218,7 +1228,7 @@
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
-<br>
+                        <br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
@@ -1231,7 +1241,7 @@
                                 <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
-<br>
+                        <br>
                         <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
                             <div class="post-box">
                                 <div class="post-img"><img src="assets/img/departments-5.jpg" class="img-fluid" alt=""></div>
