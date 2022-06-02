@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package SendEmail;
+
 import java.util.Properties;
 import java.util.Random;
 import javax.mail.Authenticator;
@@ -16,20 +17,50 @@ import javax.mail.internet.MimeMessage;
 import model.user;
 
 public class SendEmail {
-    
+
     public String getRandom() {
         Random rnd = new Random();
         int number = rnd.nextInt(999999);
         return String.format("%06d", number);
     }
 
+    public String getRandomString() {
+        // create a string of all characters
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        // create random string builder
+        StringBuilder sb = new StringBuilder();
+
+        // create an object of Random class
+        Random random = new Random();
+
+        // specify length of random string
+        int length = 7;
+
+        for (int i = 0; i < length; i++) {
+
+            // generate random index number
+            int index = random.nextInt(alphabet.length());
+
+            // get character specified by index
+            // from the string
+            char randomChar = alphabet.charAt(index);
+
+            // append the character to string builder
+            sb.append(randomChar);
+        }
+
+        String randomString = sb.toString();
+        return randomString;
+    }
+
     //send email to the user email
-    public boolean sendEmail(user user) {
+    public boolean sendEmail(user user, String text1) {
         boolean test = false;
 
         String toEmail = user.getUser_email();
-        String fromEmail = "sktngochoan@gmail.com";
-        String password = "matma123";
+        String fromEmail = "truongtxhe153352@fpt.edu.vn";
+        String password = "truong10072001";
 
         try {
 
@@ -41,7 +72,7 @@ public class SendEmail {
             pr.setProperty("mail.smtp.starttls.enable", "true");
             pr.put("mail.smtp.socketFactory.port", "587");
             pr.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
- 
+
             //get session to authenticate the host email address and password
             Session session = Session.getInstance(pr, new Authenticator() {
                 @Override
@@ -53,22 +84,19 @@ public class SendEmail {
             //set email message details
             Message mess = new MimeMessage(session);
 
-    		//set from email address
+            //set from email address
             mess.setFrom(new InternetAddress(fromEmail));
-    		//set to email address or destination email address
+            //set to email address or destination email address
             mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-    		
-    		//set email subject
+
+            //set email subject
             mess.setSubject("User Email Verification");
-            
-    		//set message text
-            String text = "Create new account successful\nPassword: " + user.getUser_password();
+            String text = "";
+            text = text1;
             mess.setText(text);
             //send the message
             Transport.send(mess);
-            
-            test=true;
-            
+            test = true;
         } catch (Exception e) {
             e.printStackTrace();
         }

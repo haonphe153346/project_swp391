@@ -88,6 +88,14 @@
         <servlet-name>FilterUserServlet</servlet-name>
         <url-pattern>/filteruser</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPassword</servlet-name>
+        <url-pattern>/resetpassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifiResetPasswordServlet</servlet-name>
+        <url-pattern>/verifyresetpassword</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

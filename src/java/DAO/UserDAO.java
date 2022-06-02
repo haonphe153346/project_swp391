@@ -315,4 +315,18 @@ public class UserDAO {
         return false;
     }
 
+    public void changePassword(user user) {
+        try {
+            Connection conn = new DBContext().getConnection();
+            String sql = "update [user]\n"
+                    + "set user_password = ?\n"
+                    + "where [user_id] = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, user.getUser_password());
+            ps.setInt(2, user.getUser_id());
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
 }
