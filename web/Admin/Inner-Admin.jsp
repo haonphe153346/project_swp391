@@ -35,12 +35,6 @@
             <jsp:include page="assets/module/Header_Admin.jsp" flush="true"/> 
             <!-- MAIN -->
             <div class="main-panel">
-             <!-- ** PUSH YOUR CODE HERE ** -->
-
-
-
-
-
             </div> 
             <!-- END MAIN -->
         </div>

@@ -5,41 +5,71 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author admin
  */
 public class slider {
 
-    public int slider_id;
-    public String slider_title;
-    public int category_id;
-    public boolean slider_status;
+    private int service_id;
+    private String service_title;
+    private String services_bi;
+    private Date service_created_date;
+    private int category_id;
+    private float service_price;
+    private float service_discount;
+    private String service_detail;
+    private int service_rateStar;
+    private service_image image_id;
 
     public slider() {
     }
 
-    public slider(int slider_id, String slider_title, int category_id, boolean slider_status) {
-        this.slider_id = slider_id;
-        this.slider_title = slider_title;
+    public slider(int service_id, String service_title, String services_bi, Date service_created_date, int category_id, float service_price, float service_discount, String service_detail, int service_rateStar, service_image image_id) {
+        this.service_id = service_id;
+        this.service_title = service_title;
+        this.services_bi = services_bi;
+        this.service_created_date = service_created_date;
         this.category_id = category_id;
-        this.slider_status = slider_status;
+        this.service_price = service_price;
+        this.service_discount = service_discount;
+        this.service_detail = service_detail;
+        this.service_rateStar = service_rateStar;
+        this.image_id = image_id;
     }
 
-    public int getSlider_id() {
-        return slider_id;
+    public int getService_id() {
+        return service_id;
     }
 
-    public void setSlider_id(int slider_id) {
-        this.slider_id = slider_id;
+    public void setService_id(int service_id) {
+        this.service_id = service_id;
     }
 
-    public String getSlider_title() {
-        return slider_title;
+    public String getService_title() {
+        return service_title;
     }
 
-    public void setSlider_title(String slider_title) {
-        this.slider_title = slider_title;
+    public void setService_title(String service_title) {
+        this.service_title = service_title;
+    }
+
+    public String getServices_bi() {
+        return services_bi;
+    }
+
+    public void setServices_bi(String services_bi) {
+        this.services_bi = services_bi;
+    }
+
+    public Date getService_created_date() {
+        return service_created_date;
+    }
+
+    public void setService_created_date(Date service_created_date) {
+        this.service_created_date = service_created_date;
     }
 
     public int getCategory_id() {
@@ -50,12 +80,44 @@ public class slider {
         this.category_id = category_id;
     }
 
-    public boolean isSlider_status() {
-        return slider_status;
+    public float getService_price() {
+        return service_price;
     }
 
-    public void setSlider_status(boolean slider_status) {
-        this.slider_status = slider_status;
+    public void setService_price(float service_price) {
+        this.service_price = service_price;
     }
 
+    public float getService_discount() {
+        return service_discount;
+    }
+
+    public void setService_discount(float service_discount) {
+        this.service_discount = service_discount;
+    }
+
+    public String getService_detail() {
+        return service_detail;
+    }
+
+    public void setService_detail(String service_detail) {
+        this.service_detail = service_detail;
+    }
+
+    public int getService_rateStar() {
+        return service_rateStar;
+    }
+
+    public void setService_rateStar(int service_rateStar) {
+        this.service_rateStar = service_rateStar;
+    }
+
+    public service_image getImage_id() {
+        return image_id;
+    }
+
+    public void setImage_id(service_image image_id) {
+        this.image_id = image_id;
+    }
+    
 }

@@ -42,6 +42,52 @@
         * Author: BootstrapMade.com
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
+        <style>
+            .form-control:focus {
+                box-shadow: none;
+                border-color: #BA68C8
+            }
+
+            .profile-button {
+                background: rgb(99, 39, 120);
+                box-shadow: none;
+                border: none
+            }
+
+            .profile-button:hover {
+                background: #682773
+            }
+
+            .profile-button:focus {
+                background: #682773;
+                box-shadow: none
+            }
+
+            .profile-button:active {
+                background: #682773;
+                box-shadow: none
+            }
+
+            .back:hover {
+                color: #682773;
+                cursor: pointer
+            }
+
+            .labels {
+                font-size: 11px
+            }
+
+            .add-experience:hover {
+                background: #BA68C8;
+                color: #fff;
+                cursor: pointer;
+                border: solid 1px #BA68C8
+            }
+            img{
+                border: 4px solid #ff5064;
+                border-radius: 50%;
+            }
+        </style>
     </head>
 
     <body>
@@ -66,22 +112,23 @@
         <jsp:include page="assets/module/header.jsp" flush="true"/>
         <!-- End Header -->
 
-        <main id="main">
+        <main id="main" style="padding: 80px 0 0 0">
 
             <!-- ======= Breadcrumbs Section ======= -->
 
             <section class="breadcrumbs">
                 <div class="container">
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-dark"><a href="addNewUser.jsp"><i class="bi bi-person-plus-fill fa-2x"></i></a></button>
-                        <button type="button" class="btn btn-success"><a href="addNewUser.jsp"><i class="bi bi-person-lines-fill"></i></a></button>
-                        
+                        <button type="button" class="btn btn-secondary"><a href="addNewUser.jsp"><i class="bi bi-person-plus-fill fa-2x"></i></a></button>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-dark"><a href="userlist"><i class="bi bi-person-video2 fa-2x"></i></a></button>
                     </div>
                     <div class="container rounded bg-white mt-5 mb-5">
                         <form action="user_detail?user_id=${user_id}" method="post">
                             <div class="row">
                                 <div class="col-md-4 border-right">
-                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="./resouce/image/${user.user_image}"><span class="font-weight-bold">${user.user_name}</span><span class="text-black-50">${user.user_email}</span><span> </span></div>
+                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="o rounded-circle mt-5" width="200px" height="200px" src="./resouce/image/${user.user_image}"><span class="font-weight-bold">${user.user_name}</span><span class="text-black-50">${user.user_email}</span><span> </span></div>
                                 </div>
                                 <div class="col-md-7 border-right">
                                     <div class="p-3 py-5">

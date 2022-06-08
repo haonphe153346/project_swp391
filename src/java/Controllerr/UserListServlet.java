@@ -62,6 +62,12 @@ public class UserListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        user user = (user) request.getSession().getAttribute("admin");
+        if (user == null){
+            PrintWriter out = response.getWriter();
+            out.println("Access denied");
+            
+        }else{
         UserDAO u = new UserDAO();
         int page = 1;
         HttpSession session = request.getSession();
@@ -84,6 +90,7 @@ public class UserListServlet extends HttpServlet {
         request.setAttribute("list_user", list_user);
         request.setAttribute("path", "home");
         request.getRequestDispatcher("UserList.jsp").forward(request, response);
+        }
     }
 
     /**

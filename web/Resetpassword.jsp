@@ -3,7 +3,7 @@
     Created on : May 25, 2022, 11:13:16 PM
     Author     : admin
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +83,9 @@
                                         <h3><i class="fa fa-lock fa-4x"></i></h3>
                                         <h2 class="text-center">Forgot Password?</h2>
                                         <p>You can reset your password here.</p>
+                                        <c:if test="${err != null}">
+                                            <p style="color: red">${err}</p>
+                                        </c:if>
                                         <div class="panel-body">
 
                                             <form id="register-form" role="form" autocomplete="off" class="form" action="resetpassword" method="post">

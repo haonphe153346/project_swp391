@@ -42,6 +42,52 @@
         * Author: BootstrapMade.com
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
+        <style>
+            .form-control:focus {
+                box-shadow: none;
+                border-color: #BA68C8
+            }
+
+            .profile-button {
+                background: rgb(99, 39, 120);
+                box-shadow: none;
+                border: none
+            }
+
+            .profile-button:hover {
+                background: #682773
+            }
+
+            .profile-button:focus {
+                background: #682773;
+                box-shadow: none
+            }
+
+            .profile-button:active {
+                background: #682773;
+                box-shadow: none
+            }
+
+            .back:hover {
+                color: #682773;
+                cursor: pointer
+            }
+
+            .labels {
+                font-size: 11px
+            }
+
+            .add-experience:hover {
+                background: #BA68C8;
+                color: #fff;
+                cursor: pointer;
+                border: solid 1px #BA68C8
+            }
+            img{
+                border: 4px solid #ff5064;
+                border-radius: 50%;
+            }
+        </style>
     </head>
 
     <body>
@@ -66,69 +112,74 @@
         <jsp:include page="assets/module/header.jsp" flush="true"/>
         <!-- End Header -->
 
-        <main id="main">
+        <main id="main" style="padding: 80px 0 0 0">
 
             <!-- ======= Breadcrumbs Section ======= -->
 
             <section class="breadcrumbs">
                 <div class="container">
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-success"><a href="addNewUser.jsp"><i class="bi bi-person-plus-fill fa-2x"></i></a></button>
+                        <button type="button" class="btn btn-secondary"><a href="addNewUser.jsp"><i class="bi bi-person-plus-fill fa-2x"></i></a></button>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-dark"><a href="userlist"><i class="bi bi-person-video2 fa-2x"></i></a></button>
                     </div>
                     <div class="container rounded bg-white mt-5 mb-5">
-                        <form action="user_detail?user_id=${user_id}" method="post">
-                            <div class="row">
-                                <div class="col-md-4 border-right">
-                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="./resouce/image/${user.user_image}"><span class="font-weight-bold">${user.user_name}</span><span class="text-black-50">${user.user_email}</span><span> </span></div>
-                                </div>
-                                <div class="col-md-7 border-right">
-                                    <div class="p-3 py-5">
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h4 class="text-right">Profile Settings</h4>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-md-12"><label class="labels">Name</label><input name="name" readonly="readonly" type="text" class="form-control" placeholder="name" value="${user.user_name}"></div>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-md-12"><label class="labels">Mobile Number</label><input readonly="readonly" name="phone" type="text" class="form-control" placeholder="enter phone number" value="${user.user_phone}"></div>
-                                            <div class="col-md-12"><label class="labels">Address</label><input name="address" readonly="readonly" type="text" class="form-control" placeholder="enter address" value="${user.user_address}"></div>
-                                            <div class="col-md-12"><label class="labels">Email</label><input readonly="readonly" name="email" type="text" class="form-control" placeholder="enter email" value="${user.user_email}"></div>
-                                            <div class="col-md-12"><label class="labels">Role</label>
-                                                <div class="input-group mb-3">
-                                                    <select name="role" class="form-select" id="inputGroupSelect01">
-                                                        <c:forEach items="${list_role}" var="i">
-                                                            <c:choose>
-                                                                <c:when test="${i.role_id == user.user_role}">
-                                                                    <option selected value="${i.role_id}">${i.role_name}</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option value="${i.role_id}">${i.role_name}</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:forEach>
+                        <div class="front">
+                            <form action="user_detail?user_id=${user_id}" method="post">
+                                <div class="row">
+                                    <div class="col-md-4 border-right">
+                                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="o rounded-circle mt-5" width="200px" height="200px" src="./resouce/image/${user.user_image}"><span class="font-weight-bold">${user.user_name}</span><span class="text-black-50">${user.user_email}</span><span> </span></div>
+                                    </div>
+                                    <div class="col-md-7 border-right">
+                                        <div class="p-3 py-5">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <h4 class="text-right">Profile Settings</h4>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-md-12"><label class="labels">Name</label><input name="name" readonly="readonly" type="text" class="form-control" placeholder="name" value="${user.user_name}"></div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-12"><label class="labels">Mobile Number</label><input readonly="readonly" name="phone" type="text" class="form-control" placeholder="enter phone number" value="${user.user_phone}"></div>
+                                                <div class="col-md-12"><label class="labels">Address</label><input name="address" readonly="readonly" type="text" class="form-control" placeholder="enter address" value="${user.user_address}"></div>
+                                                <div class="col-md-12"><label class="labels">Email</label><input readonly="readonly" name="email" type="text" class="form-control" placeholder="enter email" value="${user.user_email}"></div>
+                                                <div class="col-md-12"><label class="labels">Role</label>
+                                                    <div class="input-group mb-3">
+                                                        <select name="role" class="form-select" id="inputGroupSelect01">
+                                                            <c:forEach items="${list_role}" var="i">
+                                                                <c:choose>
+                                                                    <c:when test="${i.role_id == user.user_role}">
+                                                                        <option selected value="${i.role_id}">${i.role_name}</option>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <option value="${i.role_id}">${i.role_name}</option>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12"><label class="labels">Status</label>
+                                                    <select name="status" class="form-select" id="inputGroupSelect01">
+                                                        <c:choose>
+                                                            <c:when test="${user.user_status == true}">
+                                                                <option selected value="1">Is activated</option>
+                                                                <option value="0">Not activated</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option selected value="0">Not activated</option>
+                                                                <option value="1">Is activated</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12"><label class="labels">Status</label>
-                                                <select name="status" class="form-select" id="inputGroupSelect01">
-                                                    <c:choose>
-                                                        <c:when test="${user.user_status == true}">
-                                                            <option selected value="1">Is activated</option>
-                                                            <option value="0">Not activated</option>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <option selected value="0">Not activated</option>
-                                                            <option value="1">Is activated</option>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
-                        </form>
+                                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 </div>

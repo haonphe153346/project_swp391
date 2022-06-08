@@ -1,49 +1,60 @@
-<%-- 
-    Document   : header
-    Created on : May 25, 2022, 10:58:44 PM
-    Author     : admin
---%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index">Children's Care</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="logo me-auto"><a href="index">Children's Care</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#hotservices">Hot Services</a></li>
-          <li><a class="nav-link scrollto" href="#blogs">Blogs</a></li>
-          <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          <li><a class="nav-link scrollto" href="feedback.jsp">Feedback</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+        <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="register">Register</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
 
-      <a href="login" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Login</a>
-      <a href="user_profile"><i class="bi bi-person-lines-fill fa-2x"></i></a>
+                <li><a class="nav-link scrollto active" href="/project_swp391/index">Home</a></li>
+                    <c:if test="${sessionScope.admin != null}">
+                    <li><a class="nav-link scrollto" href="/project_swp391/Admin/AdminDashBoard">Admin</a></li>
+                    </c:if>
+                <li><a class="nav-link scrollto" href="#about">About</a></li>
+                <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="#hotservices">Hot Services</a></li>
+                <li><a class="nav-link scrollto" href="#blogs">Blogs</a></li>
+                <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+                <li><a class="nav-link scrollto" href="feedback.jsp">Feedback</a></li>
+                    <c:if test="${sessionScope.account.user_id != null || sessionScope.admin.user_id != null}">
+                    <li class="dropdown"><a href="#"><span>User Manager</span><i class="bi bi-chevron-right"></i></a>
+                        <ul>
+                            <li><a href="user_profile">Edit profile</a></li>
+                            <li><a href="changpassword">Change Password</a></li>
+                            <li><a href="logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </c:if>
+
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <!--      <a href="login" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Login</a>-->
+
+        <c:choose>
+            <c:when test="${sessionScope.account != null || sessionScope.admin != null}">
+                <c:choose>
+                    <c:when test="${sessionScope.account != null}">
+                        <a href="login" class="btn btn-#fff ms-lg-2">
+                            <p><img style="height: 50px; width: 50px;" src="./resouce/image/${sessionScope.account.user_image}"></p> <p> ${sessionScope.account.user_name}</p></a>     
+                            </c:when>
+                            <c:otherwise>
+                        <a href="login" class="btn btn-#fff ms-lg-2">
+                            <p><img style="height: 50px; width: 50px;" src="./resouce/image/${sessionScope.admin.user_image}"></p> <p> ${sessionScope.admin.user_name}</p></a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:when>
+                    <c:otherwise>
+                <a href="login" class="btn btn-outline-primary ms-lg-2"><img height="30" src="https://i.imgur.com/ZYzTdD0.png">
+                    <p>Login</p></a>
+                </c:otherwise>
+            </c:choose>
     </div>
-  </header>
+</header>
+

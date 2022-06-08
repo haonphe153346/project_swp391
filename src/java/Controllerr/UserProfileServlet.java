@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.user;
 
 /**
@@ -61,8 +62,13 @@ public class UserProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        user user = new UserDAO().getUserById(14);
-        user_image = user.getUser_image();
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        if(session.getAttribute("account") != null){
+            user user = (user) session.getAttribute("account");
+        }
+        
+        user user = (user) session.getAttribute("admin");
         if (user != null) {
             request.setAttribute("user", user);
         }
@@ -80,12 +86,20 @@ public class UserProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        user user = new UserDAO().getUserById(14);
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        user user = (user) session.getAttribute("account");
+        if(session.getAttribute("admin") != null){
+            user = (user) session.getAttribute("admin");
+        }
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
         String image = request.getParameter("image");
+        if(image.equals("")){
+            image = user.getUser_image();
+        }
         if (new UserDAO().checkPhone(phone) == false) {
             String errPhone = "Phone number is Invalid!";
             request.setAttribute("errPhone", errPhone);
@@ -99,7 +113,15 @@ public class UserProfileServlet extends HttpServlet {
             }
             user edit = new user(user.getUser_id(), name, gender, user.getUser_address(), user.getUser_password(), email, phone, user.getUser_role(), user.isUser_status(), image);
             new UserDAO().EditUser(edit);
-            user user_new = new UserDAO().getUserById(14);
+            user userold =(user)session.getAttribute("account");
+            if( (user)session.getAttribute("admin") != null){
+               userold =(user)session.getAttribute("admin"); 
+            }
+            user user_new = new UserDAO().getUserById(userold.getUser_id());
+            session.removeAttribute("account");
+            session.removeAttribute("admin");
+            session.setAttribute("account", user_new);
+            session.setAttribute("admin", user_new);
             request.setAttribute("user", user_new);
             request.getRequestDispatcher("edituser.jsp").forward(request, response);
         }

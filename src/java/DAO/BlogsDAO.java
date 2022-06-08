@@ -23,7 +23,7 @@ public class BlogsDAO {
         List<blog> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
-            String sql = "select * from blogs order by blog_created_date";
+            String sql = "select TOP 9 * from blogs order by blog_created_date";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

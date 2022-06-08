@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -20,12 +21,15 @@ public class service {
     private float service_price;
     private float service_discount;
     private String service_detail;
-    private int service_rateStar;
+    public int service_rateStar;
+    public List<image> image;
+    
+    
 
     public service() {
     }
 
-    public service(int service_id, String service_title, String services_bi, Date service_created_date, int category_id, float service_price, float service_discount, String service_detail, int service_rateStar) {
+    public service(int service_id, String service_title, String services_bi, Date service_created_date, int category_id, float service_price, float service_discount, String service_detail, int service_rateStar, List<image> image) {
         this.service_id = service_id;
         this.service_title = service_title;
         this.services_bi = services_bi;
@@ -35,6 +39,7 @@ public class service {
         this.service_discount = service_discount;
         this.service_detail = service_detail;
         this.service_rateStar = service_rateStar;
+        this.image = image;
     }
 
     public int getService_id() {
@@ -108,6 +113,12 @@ public class service {
     public void setService_rateStar(int service_rateStar) {
         this.service_rateStar = service_rateStar;
     }
-    
-    
+
+    public List<image> getImage() {
+        return image;
+    }
+
+    public void setImage(List<image> image) {
+        this.image = image;
+    }
 }

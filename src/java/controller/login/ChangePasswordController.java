@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllerr;
+package controller.login;
 
 import DAO.UserDAO;
-import SendEmail.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,7 +19,7 @@ import model.user;
  *
  * @author win
  */
-public class VerifiResetPasswordServlet extends HttpServlet {
+public class ChangePasswordController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +35,38 @@ public class VerifiResetPasswordServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet VerifiResetPasswordServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet VerifiResetPasswordServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+            HttpSession sessionchangepass = request.getSession();
+
+            String username = request.getParameter("username");
+            String oldpassword = request.getParameter("oldpassword");
+            String newpassword = request.getParameter("newpassword");
+            String repeatnewpassword = request.getParameter("repeatpassword");
+
+            UserDAO accountDao = new UserDAO();
+            user account = accountDao.checkAccountExit(username);
+//
+//            if (account == null && newpassword == oldpassword) {
+//                response.sendRedirect("login");
+//            } else {
+//                accountDao.changePasword(username, newpassword);
+//                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+//
+//            }
+
+            if (account == null) {
+                request.setAttribute("c", "The account doesn't exist yet!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            } else if (newpassword.equals(oldpassword)) {
+                request.setAttribute("c", "The new password must not be the same as the old password!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            } else if(!newpassword.equals(repeatnewpassword)){
+                request.setAttribute("c", "The repeat new password must be the same as the new password!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            }else{
+                accountDao.changePasword(username, newpassword);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
         }
     }
 
@@ -60,26 +82,7 @@ public class VerifiResetPasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        SendEmail sm = new SendEmail();
-        UserDAO userDAO = new UserDAO();
-        user u = (user) userDAO.getUserById(14);
-        String code = request.getParameter("code");
-        String code1 = (String)session.getAttribute("code");
-        System.out.println(code+code1+"=======================");
-        if (code.equalsIgnoreCase(code1)) {
-            String mess = "Reset password successful!";
-            String newPassword = sm.getRandomString();
-            u.setUser_password(newPassword);
-            userDAO.changePassword(u);
-            sm.sendEmail(u, "Your new password is: " + newPassword);
-            request.setAttribute("mess", mess);
-            request.getRequestDispatcher("VerifyResetPassword.jsp").forward(request, response);
-        } else {
-            String err = "Vetification failed!";
-            request.setAttribute("err", err);
-            request.getRequestDispatcher("VerifyResetPassword.jsp").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

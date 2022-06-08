@@ -11,6 +11,7 @@ import DAO.ServicesDAO;
 import DAO.SliderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.blog;
 import model.category;
+import model.hotservices;
 import model.service;
 import model.slider;
 
@@ -66,30 +68,42 @@ public class IndexController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //1. Slider
-            SliderDAO sliderDAO = new SliderDAO();
-            List<slider> sliderList = sliderDAO.getAllSlider();
-            request.setAttribute("sliderList", sliderList);
-        //2. Services Category
-            CategoryDAO categoryDAO = new CategoryDAO();
-            List<category> categoryList = categoryDAO.getAllCategory();
-            request.setAttribute("categoryList", categoryList);
-        //3. All Service
-            ServicesDAO servicesDAO = new ServicesDAO();
-            List<service> serviceList = servicesDAO.getAllServices();
-            request.setAttribute("serviceList", serviceList);
-        //4. Hot Services
-              
-        //5. Blogs
-            BlogsDAO blogDAO = new BlogsDAO();
-            List<blog> blogList = blogDAO.getBlogsIndexNew();
-            request.setAttribute("blogList", blogList);
-        //6. Feedback
+        ServicesDAO servicesDAO = new ServicesDAO();
+        List<service> sliderList = servicesDAO.getAllServices();
         
-       
-            
-          request.getRequestDispatcher("index.jsp").forward(request, response);
+         request.setAttribute("sliderList", sliderList);
+//        //2. Services Category
+        CategoryDAO categoryDAO = new CategoryDAO();
+        List<category> categoryList = categoryDAO.getAllCategory();
+        request.setAttribute("categoryList", categoryList);
+//        //3. All Service
+//       
+        List<service> serviceList = servicesDAO.getAllServices();
+        request.setAttribute("serviceList", serviceList);
+//        //Fix services
+        List<List> list = new ArrayList<>();
+        for (int i = 0; i < categoryList.size(); i++) {
+            List<service> service = servicesDAO.getServicesByCategoryIDforIndex(i+1);
+            list.add(service);
+        }
+        request.setAttribute("list", list);
+        //4. Hot Services
+        List<hotservices> hotserviceList = servicesDAO.getHotServices();
+        List<service> ListHotService = new ArrayList<>();
+        for (int i = 0; i < hotserviceList.size(); i++) {
+           service servicesHot = servicesDAO.getServicesByServicesID(hotserviceList.get(i).getServices_id());
+           ListHotService.add(servicesHot);
+        }
+        request.setAttribute("ListHotService", ListHotService);
+        //5. Blogs
+        BlogsDAO blogDAO = new BlogsDAO();
+        List<blog> blogList = blogDAO.getBlogsIndexNew();
+        request.setAttribute("blogList", blogList);
+        //6. Feedback
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *

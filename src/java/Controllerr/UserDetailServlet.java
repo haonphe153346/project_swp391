@@ -61,6 +61,11 @@ public class UserDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        user user1 = (user) request.getSession().getAttribute("admin");
+        if (user1 == null){
+            PrintWriter out = response.getWriter();
+            out.println("Access denied");
+        }else{
         int id = Integer.parseInt(request.getParameter("user_id"));
         String func = request.getParameter("function");
         user user = new UserDAO().getUserById(id);
@@ -83,7 +88,7 @@ public class UserDetailServlet extends HttpServlet {
         else{
             request.getRequestDispatcher("ViewUser.jsp").forward(request, response);
         }
-        
+        }
     }
 
     /**

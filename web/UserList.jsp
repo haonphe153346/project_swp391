@@ -43,6 +43,50 @@
         * Author: BootstrapMade.com
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
+        <style>
+            body { font-family: sans-serif; }
+
+            .scene {
+                display: inline-block;
+                width: 200px;
+                height: 260px;
+                /*   border: 1px solid #CCC; */
+                margin: 40px 0;
+                perspective: 600px;
+            }
+
+            .card {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                transform-style: preserve-3d;
+                transform-origin: center right;
+                transition: transform 0.5s;
+            }
+
+            .card.is-flipped {
+                transform: translateX(-100%) rotateY(-180deg);
+            }
+
+            .card__face {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                color: black;
+                backface-visibility: hidden;
+            }
+
+            .card__face--front {
+                background: white;
+            }
+
+            .card__face--back { 
+                transform: rotateY(180deg);
+            }
+
+
+        </style>
     </head>
 
     <body>
@@ -67,30 +111,33 @@
         <jsp:include page="assets/module/header.jsp" flush="true"/>
         <!-- End Header -->
 
-        <main id="main">
+        <main id="main" style="padding: 80px 0 0 0">
 
             <!-- ======= Breadcrumbs Section ======= -->
             <section class="breadcrumbs">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 btn btn-dark " style="text-align: left; height: 710px">
                             <div>
                                 <h5>SEARCH</h5>
-                                <nav class="navbar navbar-light bg-light">
-                                    <form action="filteruser" method="get" class="form-inline" style="display: flex">
-                                        <input name="search" class="form-control mr-sm-2" style="margin-right: 8px " type="search" placeholder="Search" aria-label="Search">
-                                        <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                <nav class="navbar navbar-light bg-light"  style="display: block">
+                                    <form action="filteruser" class="form-inline">
+                                        <div class="input-group input-group-sm">
+                                            <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+                                            <div class="input-group-append">
+                                                <button type="submit" style="border-radius: 0px" class="btn btn-secondary btn-number">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </nav>
                             </div>
                             <div style="margin-top:15px ">
                                 <h5>FILTER
-                                    <div class="btn-group position-relative" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-outline-success"><a href="userlist">Clear Filter</a></button>
-                                    </div>
                                 </h5>
                                 <!--FILTER By Role-->
-                                <div class="row input-group mb-3">
+                                <div class="input-group mb-3">
 
                                     <div class="mb-2 col-md-12">
                                         <input readonly="readonly" type="text" value="Role" class="form-control" aria-label="Text input with checkbox">
@@ -98,12 +145,17 @@
                                     <c:set var="role_check" value="${role_check}" />
                                     <c:set var="list_role" value="${list_role}"/>
                                     <form action="filteruser" method="get">
-                                        <c:forEach begin="0" end="${list_role.size()-1}" var="i">
-                                            <div class="form-check form-check-inline">
-                                                <input name="role" ${role_check[i]?"checked":""} onclick="this.form.submit()" value="${list_role.get(i).role_id}" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" />
-                                                <label class="form-check-label" for="inlineCheckbox1">${list_role.get(i).role_name}</label>
+
+                                        <div class="row">
+                                            <div  class="col-md-3">
+                                                <c:forEach begin="0" end="${list_role.size()-1}" var="i">
+                                                    <div class="form-check form-check-inline">
+                                                        <input name="role" ${role_check[i]?"checked":""} onclick="this.form.submit()" value="${list_role.get(i).role_id}" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" />
+                                                        <label class="form-check-label" for="inlineCheckbox1">${list_role.get(i).role_name}</label>
+                                                    </div>
+                                                </c:forEach> 
                                             </div>
-                                        </c:forEach> 
+                                        </div>
                                     </form>
 
                                 </div>
@@ -145,49 +197,53 @@
                                 <h5>ORDER BY</h5>
                                 <form action="filteruser" method="get"> 
                                     <div class="custom-control custom-radio">
-                                    <input type="radio" ${sort=="id"?"checked":""} onclick="this.form.submit()" value="id" id="customRadio1" name="sort" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">ID</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" ${sort=="name"?"checked":""} onclick="this.form.submit()" value="name" id="customRadio2" name="sort" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">NAME</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" ${sort=="gender"?"checked":""} onclick="this.form.submit()" value="gender" id="customRadio1" name="sort" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">GENDER</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" ${sort=="email"?"checked":""} onclick="this.form.submit()" value="email" id="customRadio2" name="sort" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">EMAIL</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" ${sort=="mobile"?"checked":""} onclick="this.form.submit()" value="mobile" id="customRadio1" name="sort" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">MOBILE</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" ${sort=="role"?"checked":""} onclick="this.form.submit()" value="role" id="customRadio2" name="sort" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">ROLE</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" ${sort=="status"?"checked":""} onclick="this.form.submit()" value="status" id="customRadio2" name="sort" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">STATUS</label>
-                                </div>
+                                        <input type="radio" ${sort=="id"?"checked":""} onclick="this.form.submit()" value="id" id="customRadio1" name="sort" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1">ID</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" ${sort=="name"?"checked":""} onclick="this.form.submit()" value="name" id="customRadio2" name="sort" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">NAME</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" ${sort=="gender"?"checked":""} onclick="this.form.submit()" value="gender" id="customRadio1" name="sort" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1">GENDER</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" ${sort=="email"?"checked":""} onclick="this.form.submit()" value="email" id="customRadio2" name="sort" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">EMAIL</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" ${sort=="mobile"?"checked":""} onclick="this.form.submit()" value="mobile" id="customRadio1" name="sort" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1">MOBILE</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" ${sort=="role"?"checked":""} onclick="this.form.submit()" value="role" id="customRadio2" name="sort" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">ROLE</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" ${sort=="status"?"checked":""} onclick="this.form.submit()" value="status" id="customRadio2" name="sort" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2">STATUS</label>
+                                    </div>
                                 </form>
                             </div>
 
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 ">
                             <div class="mb-3">
                                 <a href="addNewUser.jsp"><button type="button" class="btn btn-primary">ADD NEW</button></a>
+                                <a href="userlist"><button type="button" class="btn btn-dark">CLEAR FILTER</button></a>
                             </div>
-                            <div class="row">
-                                <c:forEach items="${list_user}" var="i">
+                            <div id="content" class="row">
+                                <c:forEach items="${list_user}" var="u">
                                     <div class="col-sm-6 mb-3">
                                         <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">${i.user_id}
+                                            <div card__face card__face--back>
+                                                <img width="350px" height="300px" src="./resouce/image/${u.user_image}">
+                                            </div>
+                                            <div class="card-body card__face card__face--front">
+                                                <h5 class="card-title">${u.user_id}
                                                     <c:choose>
-                                                        <c:when test="${i.user_gender == true}">
+                                                        <c:when test="${u.user_gender == true}">
                                                             <img width="30px" src="./assets/img/male.jpg">
                                                         </c:when>
                                                         <c:otherwise>
@@ -195,16 +251,16 @@
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </h5>
-                                                <p class="card-text">${i.user_name}</p>
-                                                <p class="card-text">${i.user_email}</p>
-                                                <p class="card-text">${i.user_phone}</p>
+                                                <p class="card-text">${u.user_name}</p>
+                                                <p class="card-text">${u.user_email}</p>
+                                                <p class="card-text">${u.user_phone}</p>
                                                 <c:forEach items="${list_role}" var="r">
-                                                    <c:if test="${r.role_id == i.user_role}">
+                                                    <c:if test="${r.role_id == u.user_role}">
                                                         <p class="card-text">${r.role_name}</p>
                                                     </c:if>
                                                 </c:forEach>
                                                 <c:choose>
-                                                    <c:when test="${i.user_status == true}">
+                                                    <c:when test="${u.user_status == true}">
                                                         <p style="color: green" class="card-text">Is activated</p> 
                                                     </c:when>
                                                     <c:otherwise>
@@ -213,8 +269,8 @@
                                                 </c:choose>      
                                                 <c:set var="func1" value="view" />
                                                 <c:set var="func2" value="edit" />
-                                                <a href="user_detail?user_id=${i.user_id}&function=${func1}" class="btn btn-primary">View User</a>
-                                                <a href="user_detail?user_id=${i.user_id}&function=${func2}" class="btn btn-success">Edit User</a>
+                                                <a href="user_detail?user_id=${u.user_id}&function=${func1}" class="btn btn-primary">View User</a>
+                                                <a href="user_detail?user_id=${u.user_id}&function=${func2}" class="btn btn-success">Edit User</a>
                                             </div>
 
                                         </div>
@@ -223,40 +279,42 @@
                             </div>
                         </div>
                     </div>
-                    <c:set var="home" value="home"/>
-                    <c:set var="filter" value="filter"/>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a style="pointer-events: ${page == 1?"none":""}" class="page-link" href="userlist?page=${page - 1}" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <c:if test="${path == home}">
+                </div>
+                <c:set var="home" value="home"/>
+                <c:set var="filter" value="filter"/>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a style="pointer-events: ${page == 1?"none":""}" class="page-link" href="userlist?page=${page - 1}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <c:if test="${path == home}">
+                            <c:forEach begin="1" end="${maxPage}" var="i">
+                                <li class="page-item ${i==page?"active":""}"><a class="page-link" href="userlist?page=${i}">${i}</a></li>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${path == filter}">
                                 <c:forEach begin="1" end="${maxPage}" var="i">
-                                    <li class="page-item ${i==page?"active":""}"><a class="page-link" href="userlist?page=${i}">${i}</a></li>
-                                    </c:forEach>
-                                </c:if>
-                                <c:if test="${path == filter}">
-                                    <c:forEach begin="1" end="${maxPage}" var="i">
-                                    <li class="page-item ${i==page?"active":""}"><a class="page-link" href="filteruser?page=${i}">${i}</a></li>
-                                    </c:forEach>
-                                </c:if>
+                                <li class="page-item ${i==page?"active":""}"><a class="page-link" href="filteruser?page=${i}">${i}</a></li>
+                                </c:forEach>
+                            </c:if>
 
-                            <li class="page-item">
-                                <a style="pointer-events: ${page == maxPage?"none":""}" class="page-link" href="userlist?page=${page + 1}" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                        <li class="page-item">
+                            <a style="pointer-events: ${page == maxPage?"none":""}" class="page-link" href="userlist?page=${page + 1}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
                 </div>
 
         </main><!-- End #main -->
 
         <!-- ======= Footer ======= -->
+
         <jsp:include page="assets/module/footer.jsp" flush="true"/>
         <!-- End Footer -->
 
@@ -272,7 +330,33 @@
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+                                            function searchByName(param) {
+                                                var txtSearch = param.value;
+                                                $.ajax({
+                                                    url: "/project_swp391/searchajax",
+                                                    type: "get", //send it through get method
+                                                    data: {
+                                                        txt: txtSearch
+                                                    },
+                                                    success: function (data) {
+                                                        var row = document.getElementById("content");
+                                                        row.innerHTML = data;
+                                                    },
+                                                    error: function (xhr) {
+                                                        //Do Something to handle error
+                                                    }
+                                                });
+                                            }
+                                            var cards = document.querySelectorAll('.card');
 
+                                            [...cards].forEach((card) => {
+                                                card.addEventListener('click', function () {
+                                                    card.classList.toggle('is-flipped');
+                                                });
+                                            });
+        </script>  
     </body>
 
 </html>

@@ -16,6 +16,38 @@
         <servlet-name>medicineController</servlet-name>
         <servlet-class>Controllerr.medicineController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <servlet-class>Controllerr.ResetPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerifyResetPasswordServlet</servlet-name>
+        <servlet-class>Controllerr.VerifyResetPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordController</servlet-name>
+        <servlet-class>controller.login.ChangePasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogOutController</servlet-name>
+        <servlet-class>controller.login.LogOutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerifyRegisterController</servlet-name>
+        <servlet-class>controller.login.VerifyRegisterController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>controller.admin.AdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchUserAjax</servlet-name>
+        <servlet-class>Controllerr.SearchUserAjax</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserListController</servlet-name>
+        <servlet-class>controller.admin.UserListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -89,12 +121,36 @@
         <url-pattern>/filteruser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ResetPassword</servlet-name>
+        <servlet-name>ResetPasswordServlet</servlet-name>
         <url-pattern>/resetpassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>VerifiResetPasswordServlet</servlet-name>
+        <servlet-name>VerifyResetPasswordServlet</servlet-name>
         <url-pattern>/verifyresetpassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordController</servlet-name>
+        <url-pattern>/changpassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyRegisterController</servlet-name>
+        <url-pattern>/verifyregister</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/Admin/AdminDashBoard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchUserAjax</servlet-name>
+        <url-pattern>/searchajax</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserListController</servlet-name>
+        <url-pattern>/Admin/userlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -638,10 +638,10 @@
         ======================================================== -->
     </head>
 
-    <body>
+    <body style="padding: 80px" >
 
         <!-- ======= Top Bar ======= -->
-        <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div id="topbar" class="d-flex align-items-center fixed-top" >
             <div class="container d-flex justify-content-between">
                 <div class="contact-info d-flex align-items-center">
                     <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">Children's Care@fpt.edu.vn</a>
@@ -660,48 +660,30 @@
         <jsp:include page="assets/module/header.jsp" flush="true"/>
         <!-- End Header -->
 
-        <!-- ======= Hero Slider Section ======= -->
+<!--         ======= Hero Slider Section ======= 
         <section id="hero-slider" class="hero-slider">
             <div class="container-md" data-aos="fade-in">
                 <div class="row">
                     <div class="col-12">
                         <div class="swiper sliderFeaturedPosts">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-1.jpg');">
+                                <c:forEach items="${sliderList}" var="slide">
+                                    <div class="swiper-slide">
+                                        
+                                            <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/blog/${slider.image.get(0).image_link}');">
+                                        
+                                    
                                         <div class="img-bg-inner">
-                                            <h2>The Best Homemade Masks for Face (keep the Pimples Away)</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-                                        </div>
+                                            <h2>${slide.service_title}</h2>
+                                            <p>
+                                                ${slide.services_bi}
+                                            </p></div>
                                     </a>
                                 </div>
+                                </c:forEach>
+                                
 
-                                <div class="swiper-slide">
-                                    <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-2.jpg');">
-                                        <div class="img-bg-inner">
-                                            <h2>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-3.jpg');">
-                                        <div class="img-bg-inner">
-                                            <h2>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-4.jpg');">
-                                        <div class="img-bg-inner">
-                                            <h2>9 Half-up/half-down Hairstyles for Long and Medium Hair</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-                                        </div>
-                                    </a>
-                                </div>
+                                
                             </div>
                             <div class="custom-swiper-button-next">
                                 <span class="bi-chevron-right"></span>
@@ -715,7 +697,42 @@
                     </div>
                 </div>
             </div>
-        </section><!-- End Hero Slider Section -->
+        </section> End Hero Slider Section -->
+
+<!-- ======= Hero Slider Section ======= -->
+    <section id="hero-slider" class="hero-slider">
+      <div class="container-md" data-aos="fade-in">
+        <div class="row">
+          <div class="col-12">
+            <div class="swiper sliderFeaturedPosts">
+              <div class="swiper-wrapper">
+                  <c:forEach items="${sliderList}" var="slide">
+                      <div class="swiper-slide">
+                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/${slide.image.get(0).getImage_link()}');">
+                    <div class="img-bg-inner">
+                      <h2>${slide.service_title}</h2>
+                      <p>${slide.services_bi}</p>
+                    </div>
+                  </a>
+                </div>
+
+                  </c:forEach>
+                
+               
+              </div>
+              <div class="custom-swiper-button-next">
+                <span class="bi-chevron-right"></span>
+              </div>
+              <div class="custom-swiper-button-prev">
+                <span class="bi-chevron-left"></span>
+              </div>
+
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Hero Slider Section -->
 
         <main id="main">
 
@@ -805,240 +822,71 @@
                 <div class="container" data-aos="fade-up">
                     <div class="section-title">
                         <h2>All Services</h2>
-                        <p>There are many servies in Children's Care</p>
+                        <p>There are many servies in Children's Care, Choose Your Category To See</p>
                     </div>
                     <ul class="nav nav-tabs row gy-4 d-flex">
                         
                         <c:forEach items="${requestScope.categoryList}" var="cate">
+                            
                             <li class="nav-item col-6 col-md-4 col-lg-2">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-${cate.category_id}">
+                            <a  class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-${cate.category_id}" href="index?cid=${cate.category_id}">
+                                
                                 <i class="${cate.icon}"></i>
                                 <h4>${cate.category_name}</h4>
                             </a>
-                        </li><!-- End Tab 1 Nav -->
+                            </li><!-- End Tab 1 Nav -->
                         </c:forEach>
-                        
-
-<!--                        <li class="nav-item col-6 col-md-4 col-lg-2">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-                                <i class="bi bi-box-seam color-indigo"></i>
-                                <h4>Hands</h4>
-                            </a>
-                        </li> End Tab 2 Nav 
-
-                        <li class="nav-item col-6 col-md-4 col-lg-2">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-                                <i class="bi bi-brightness-high color-teal"></i>
-                                <h4>Lungs</h4>
-                            </a>
-                        </li> End Tab 3 Nav 
-
-                        <li class="nav-item col-6 col-md-4 col-lg-2">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-                                <i class="bi bi-command color-red"></i>
-                                <h4>Body</h4>
-                            </a>
-                        </li> End Tab 4 Nav 
-
-                        <li class="nav-item col-6 col-md-4 col-lg-2">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
-                                <i class="bi bi-easel color-blue"></i>
-                                <h4>Foot</h4>
-                            </a>
-                        </li> End Tab 5 Nav 
-
-                        <li class="nav-item col-6 col-md-4 col-lg-2">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-6">
-                                <i class="bi bi-map color-orange"></i>
-                                <h4>Face</h4>
-                            </a>
-                        </li> End Tab 6 Nav -->
+                       
 
                     </ul>
 
                     <div class="tab-content">
                         
-                        <c:forEach items="${requestScope.serviceList}" var="service">
-                           <div class="tab-pane active show" id="tab-1">
+                        <c:forEach items="${requestScope.list}" var="servicee">
+                            <c:forEach items="${servicee}" var="service">
+                            <div class="tab-pane" id="tab-${service.category_id}">
                             <div class="row gy-4">
                                 <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-                                    <h3>Kiểm tra mắt</h3>
                                     </br>
+                                    <center>
+                                        <h3>${service.service_title}</h3>
+                                    </center>
+                                    </br>
+
                                     <p>
-                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum
+                                        ${service.services_bi}
                                     </p>
                                     <p class="fst-italic">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua.
+                                        
+                                         Discount Price: ${service.service_discount}$
                                     </p>
-                                    <ul>
+                                    <p>
+                                    <h5>
+                                       
+                                    </h5>
+                                    Old Price: ${service.service_price}$
+                                    </p>
+                                    Rate Star: ${service.service_rateStar} <i class="bi bi-star-fill"></i>
+<!--                                    <ul>
                                         <li><i class="bi bi-check-circle-fill"></i><a href="service-single">ĐAU MẮT ĐỎ</a></li>
                                         <li><i class="bi bi-check-circle-fill"></i><a href="service-single">ĐAU GIÁC MẠC </a></li>
                                         <li><i class="bi bi-check-circle-fill"></i><a href="service-single">VIÊM MẮT</a></li>
                                         <li><i class="bi bi-check-circle-fill"></i><a href="service-single">MẮT SƯNG</a></li>
                                         <li><i class="bi bi-check-circle-fill"></i><a href="service-single">More...</a></li>
 
-                                    </ul>
+                                    </ul>-->
                                     <div class="text-center mt-auto">
                                         <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                                    <img src="assets/img/blog-1.jpg" alt="" class="img-fluid">
+                                    <img src="assets/img/${service.image.get(0).getImage_link()}" alt="" class="img-fluid">
                                 </div>
                             </div>
-                        </div><!-- End Tab Content 1 --> 
+                        </div><!-- End Tab Content 1 -->
+                        </c:forEach>
                         </c:forEach>
                         
-
-                        <div class="tab-pane" id="tab-2">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 order-2 order-lg-1">
-                                    </br>
-
-                                    <h3>Kiểm tra tay</h3>
-                                    </br>
-
-                                    <p>
-                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum
-                                    </p>
-                                    <p class="fst-italic">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                    <ul>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                                    </ul>
-                                    <div class="text-center mt-auto">
-                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 order-1 order-lg-2 text-center">
-
-                                    <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div><!-- End Tab Content 2 -->
-
-                        <div class="tab-pane" id="tab-3">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 order-2 order-lg-1">
-                                    <h3>Pariatur</h3>
-                                    <p>
-                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum
-                                    </p>
-                                    <ul>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                                    </ul>
-                                    <p class="fst-italic">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                    <div class="text-center mt-auto">
-                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 order-1 order-lg-2 text-center">
-                                    <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div><!-- End Tab Content 3 -->
-
-                        <div class="tab-pane" id="tab-4">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 order-2 order-lg-1">
-                                    <h3>Nostrum</h3>
-                                    <p>
-                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum
-                                    </p>
-                                    <p class="fst-italic">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                    <ul>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                                    </ul>
-                                    <div class="text-center mt-auto">
-                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 order-1 order-lg-2 text-center">
-                                    <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div><!-- End Tab Content 4 -->
-
-                        <div class="tab-pane" id="tab-5">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 order-2 order-lg-1">
-                                    <h3>Adipiscing</h3>
-                                    <p>
-                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum
-                                    </p>
-                                    <p class="fst-italic">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                    <ul>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                                    </ul>
-                                    <div class="text-center mt-auto">
-                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 order-1 order-lg-2 text-center">
-                                    <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div><!-- End Tab Content 5 -->
-
-                        <div class="tab-pane" id="tab-6">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 order-2 order-lg-1">
-                                    <h3>Reprehit</h3>
-                                    <p>
-                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum
-                                    </p>
-                                    <p class="fst-italic">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                        magna aliqua.
-                                    </p>
-                                    <ul>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                        <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                                    </ul>
-                                    <div class="text-center mt-auto">
-                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 order-1 order-lg-2 text-center">
-                                    <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div><!-- End Tab Content 6 -->
-
                     </div>
 
                 </div>
@@ -1054,104 +902,32 @@
                     </div>
 
                     <div class="row gy-4">
-
-                        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                        <c:forEach items="${ListHotService}" var="hots">
+                            <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
                             <div class="pricing-item">
 
                                 <div class="pricing-header">
-                                    <h3>Eyes</h3>
+                                    <h3>${hots.service_title}</h3>
                                     </br>
-                                    <h4><sup>$</sup>0<span>3̶̶9̶̶9̶$</span></h4>
+                                    <h4><sup>$</sup>${hots.service_price}<span>  3̶̶9̶̶9̶$</span></h4>
                                 </div>
 
-                                <ul>
-                                    <li><i class="bi bi-dot"></i> <span>Kiểm tra độ cận thị </span></li>
-                                    <li><i class="bi bi-dot"></i> <span>Miễn Phí Thuốc Nhỏ Mắt</span></li>
-                                    <li><i class="bi bi-dot"></i> <span>Miễn Phí Khám Cận Thị</span></li>
-                                    <li class="na"><i class="bi bi-x"></i> <span>không được dùng dịch vụ luxury</span></li>
-                                    <li class="na"><i class="bi bi-x"></i> <span>được chăm sóc bởi bác sĩ mới vào nghề</span></li>
-                                </ul>
-
+                                    <center>
+                                        <p>${hots.services_bi}</p>
+                                    </center>
+                                    </br>
+                                <center>${hots.service_rateStar} <i class="bi bi-star-fill"></i></center>
+                                </br>
+                                </br>
                                 <div class="text-center mt-auto">
                                     <a href="#" class="buy-btn">Buy Now</a>
                                 </div>
 
                             </div>
                         </div><!-- End Pricing Item -->
-                        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="pricing-item">
-
-                                <div class="pricing-header">
-                                    <h3>Hand</h3>
-                                    </br>
-
-                                    <h4><sup>$</sup>299$<span> 3̶̶9̶̶9̶$</span></h4>
-                                </div>
-
-                                <ul>
-                                    <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
-                                    <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
-                                    <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</span></li>
-                                    <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                                    <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                                </ul>
-
-                                <div class="text-center mt-auto">
-                                    <a href="#" class="buy-btn">Buy Now</a>
-                                </div>
-
-                            </div>
-                        </div><!-- End Pricing Item -->
-                        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="pricing-item">
-
-                                <div class="pricing-header">
-                                    <h3>Lungs</h3>
-                                    </br>
-
-                                    <h4><sup>$</sup>4.999<span> 5̶̶9̶̶9̶$</span></h4>
-                                </div>
-
-                                <ul>
-                                    <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
-                                    <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
-                                    <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</span></li>
-                                    <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                                    <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                                </ul>
-
-                                <div class="text-center mt-auto">
-                                    <a href="#" class="buy-btn">Buy Now</a>
-                                </div>
-
-                            </div>
-                        </div><!-- End Pricing Item -->
-                        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="pricing-item featured">
-
-                                <div class="pricing-header">
-                                    <h3>Full Services</h3>
-                                    </br>
-
-                                    <h4><sup>$</sup>6.999<span> 3̶̶9̶̶9̶$</span></h4>
-                                </div>
-
-                                <ul>
-                                    <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
-                                    <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
-                                    <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</spa>
-                                    </li>
-                                    <li><i class="bi bi-dot"></i> <span>Pharetra massa massa ultricies</spa>
-                                    </li>
-                                    <li><i class="bi bi-dot"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                                </ul>
-
-                                <div class="text-center mt-auto">
-                                    <a href="#" class="buy-btn">Buy Now</a>
-                                </div>
-
-                            </div>
-                        </div><!-- End Pricing Item -->
+                        </c:forEach>
+                        
+                       
 
 
 
@@ -1168,21 +944,21 @@
 
                     <div class="section-title">
                         <h2>Blogs</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <p>There are many blogs in Children's Care</p>
                     </div>
 
                     <div class="row">
                         <c:forEach items="${requestScope.blogList}" var="blog">
-                            <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="post-box">
-                                <div class="post-img"><img src="assets/img/${blog.blog_image}" class="img-fluid" alt=""></div>
+                                <div class="post-img"><img src="./resouce/image/${blog.blog_image}" class="img-fluid" alt=""></div>
                                 <div class="meta">
                                     <span class="post-date">${blog.blog_created_date}</span>
                                     <span class="post-author"> / ${blog.user_id}</span>
                                 </div>
                                 <h4 class="post-title">${blog.title}</h4>
                                 <p>${blog.bi}</p>
-                                <a href="blog-details?id=${blog.blog_id}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+<!--                                <a  class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>-->
                             </div>
                         </div>
                         <br>
@@ -1190,94 +966,7 @@
                         </c:forEach>
                         
                         
-                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                            <div class="post-box">
-                                <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
-                                <div class="meta">
-                                    <span class="post-date">Fri, September 05</span>
-                                    <span class="post-author"> / Mario Douglas</span>
-                                </div>
-                                <h4 class="post-title">Et repellendus molestiae qui est sed omnis</h4>
-                                <p>Voluptatem nesciunt omnis libero autem tempora enim ut ipsam id. Odit quia ab eum assumenda. Quisquam omnis aliquid necessitatibus tempora consectetur doloribus...</p>
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
-                            <div class="post-box">
-                                <div class="post-img"><img src="assets/img/departments-5.jpg" class="img-fluid" alt=""></div>
-                                <div class="meta">
-                                    <span class="post-date">Tue, July 27</span>
-                                    <span class="post-author"> / Lisa Hunter</span>
-                                </div>
-                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
-                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
-                            <div class="post-box">
-                                <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
-                                <div class="meta">
-                                    <span class="post-date">Tue, July 27</span>
-                                    <span class="post-author"> / Lisa Hunter</span>
-                                </div>
-                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
-                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
-                            <div class="post-box">
-                                <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
-                                <div class="meta">
-                                    <span class="post-date">Tue, July 27</span>
-                                    <span class="post-author"> / Lisa Hunter</span>
-                                </div>
-                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
-                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
-                            <div class="post-box">
-                                <div class="post-img"><img src="assets/img/departments-5.jpg" class="img-fluid" alt=""></div>
-                                <div class="meta">
-                                    <span class="post-date">Tue, July 27</span>
-                                    <span class="post-author"> / Lisa Hunter</span>
-                                </div>
-                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
-                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
-                            <div class="post-box">
-                                <div class="post-img"><img src="assets/img/departments-3.jpg" class="img-fluid" alt=""></div>
-                                <div class="meta">
-                                    <span class="post-date">Tue, July 27</span>
-                                    <span class="post-author"> / Lisa Hunter</span>
-                                </div>
-                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
-                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
-                            <div class="post-box">
-                                <div class="post-img"><img src="assets/img/departments-1.jpg" class="img-fluid" alt=""></div>
-                                <div class="meta">
-                                    <span class="post-date">Tue, July 27</span>
-                                    <span class="post-author"> / Lisa Hunter</span>
-                                </div>
-                                <h4 class="post-title">Quia assumenda est et veritatis aut quae</h4>
-                                <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
+                       
 
                     </div>
 
@@ -1491,7 +1180,7 @@
                         <div class="col-lg-2dot4 col-md-6 d-flex align-items-stretch">
                             <div class="member" data-aos="fade-up" data-aos-delay="100">
                                 <div class="member-img">
-                                    <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                                    <img src="./resouce/image/khoa.jpg" class="img-fluid" alt="">
                                     <div class="social">
                                         <a href=""><i class="bi bi-twitter"></i></a>
                                         <a href=""><i class="bi bi-facebook"></i></a>
@@ -1508,7 +1197,7 @@
                         <div class="col-lg-2dot4 col-md-6 d-flex align-items-stretch">
                             <div class="member" data-aos="fade-up" data-aos-delay="200">
                                 <div class="member-img">
-                                    <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                                    <img src="./resouce/image/hoanonfire.jpg" height="300px"  class="img-fluid" alt="">
                                     <div class="social">
                                         <a href=""><i class="bi bi-twitter"></i></a>
                                         <a href=""><i class="bi bi-facebook"></i></a>
@@ -1525,7 +1214,7 @@
                         <div class="col-lg-2dot4 col-md-6 d-flex align-items-stretch">
                             <div class="member" data-aos="fade-up" data-aos-delay="200">
                                 <div class="member-img">
-                                    <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                                    <img src="./resouce/image/hao.jpg" class="img-fluid" alt="">
                                     <div class="social">
                                         <a href=""><i class="bi bi-twitter"></i></a>
                                         <a href=""><i class="bi bi-facebook"></i></a>
@@ -1543,7 +1232,7 @@
                         <div class="col-lg-2dot4 col-md-6 d-flex align-items-stretch">
                             <div class="member" data-aos="fade-up" data-aos-delay="300">
                                 <div class="member-img">
-                                    <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                                    <img src="./resouce/image/truong.jpg" class="img-fluid" alt="">
                                     <div class="social">
                                         <a href=""><i class="bi bi-twitter"></i></a>
                                         <a href=""><i class="bi bi-facebook"></i></a>
@@ -1561,7 +1250,7 @@
                         <div class="col-lg-2dot4 col-md-6 d-flex align-items-stretch">
                             <div class="member" data-aos="fade-up" data-aos-delay="400">
                                 <div class="member-img">
-                                    <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                                    <img src="./resouce/image/date.jpg"class="img-fluid" alt="">
                                     <div class="social">
                                         <a href=""><i class="bi bi-twitter"></i></a>
                                         <a href=""><i class="bi bi-facebook"></i></a>
@@ -1588,7 +1277,7 @@
         <!-- ======= Footer ======= -->
         <jsp:include page="assets/module/footer.jsp"  flush="true"/>
         <!-- END FOOTER -->
-        <div id="preloader"></div>
+        <!--<div id="preloader"></div>-->
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
         <!-- Vendor JS Files -->
@@ -1600,7 +1289,6 @@
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
-
     </body>
 
 </html>

@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllerr;
+package controller.login;
 
 import DAO.UserDAO;
-import SendEmail.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,13 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.user;
+import model.UserRegister;
 
 /**
  *
  * @author win
  */
-public class ResetPassword extends HttpServlet {
+public class VerifyRegisterController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +35,33 @@ public class ResetPassword extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ResetPassword</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ResetPassword at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession();
+            UserDAO accountDao = new UserDAO();
+            UserRegister user = (UserRegister) session.getAttribute("authcode");
+            String code1 = request.getParameter("authcode1");
+            String code2 = request.getParameter("authcode2");
+            String code3 = request.getParameter("authcode3");
+            String code4 = request.getParameter("authcode4");
+            String code5 = request.getParameter("authcode5");
+            String code6 = request.getParameter("authcode6");
+            String code = code1 + code2 + code3 + code4 + code5 + code6;
+
+            String username = (String) session.getAttribute("username");
+            Boolean gender = (Boolean) session.getAttribute("gender");
+            String address = (String) session.getAttribute("address");
+            String useremail = (String) session.getAttribute("useremail");
+            String phone = (String) session.getAttribute("phone");
+            String password = (String) session.getAttribute("password");
+            String repeatpassword = (String) session.getAttribute("repeatpassword");
+
+            if (code.equals(user.getCode())) {
+                accountDao.register(username, gender, address, password, useremail, phone);
+                response.sendRedirect("login");
+                // out.println("Verification Successfully!");
+            } else {
+                 request.setAttribute("error", "Incorrect verification code!");
+            request.getRequestDispatcher("verifyRegister.jsp").forward(request, response);
+            }
         }
     }
 
@@ -60,7 +77,7 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("Resetpassword.jsp");
+        processRequest(request, response);
     }
 
     /**
@@ -74,19 +91,7 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        SendEmail sm = new SendEmail();
-        UserDAO userDAO = new UserDAO();
-        user u = (user) userDAO.getUserById(14);
-        String email = request.getParameter("email");
-        String code = sm.getRandom();
-        if (email.equals(u.getUser_email())) {
-            System.out.println(code + "============================");
-            session.setAttribute("code", code);
-            sm.sendEmail(u, "Your vetification code is: " + code);
-        }
-        request.getRequestDispatcher("VerifyResetPassword.jsp").forward(request, response);
-
+        processRequest(request, response);
     }
 
     /**

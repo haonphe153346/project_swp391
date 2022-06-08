@@ -64,6 +64,11 @@ public class AddNewUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        user user1 = (user) request.getSession().getAttribute("admin");
+        if (user1 == null){
+            PrintWriter out = response.getWriter();
+            out.println("Access denied");
+        }else{
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
@@ -82,14 +87,11 @@ public class AddNewUser extends HttpServlet {
             gender = false;
         }
         UserDAO u =new UserDAO();
-        System.out.println(phone+"======================");
         List<user> list_email = new UserDAO().getAllUser();
         if (checkEmailExit(list_email, email) == true) {
             String errEmail = "Email already exists !";
             request.setAttribute("errEmail", errEmail);
-            System.out.println("1++++++++++++++++++++++");
             if (u.checkPhone(phone) == false) {
-                System.out.println("2++++++++++++++++++++++");
                 String errPhone = "Phone number is Invalid!";
                 request.setAttribute("errPhone", errPhone);
             }
@@ -101,19 +103,21 @@ public class AddNewUser extends HttpServlet {
         } else {
             List<userRole> list_role = new RoleDAO().getAllRole();
             user user = new user(role, name, gender, address, password, email, phone, role, status, image);
-//            new UserDAO().addNewUser(user);
+            new UserDAO().addNewUser(user);
             String role1 = "";
             for (int i = 0; i < list_role.size(); i++) {
                 if (user.getUser_role() == list_role.get(i).getRole_id()) {
                     role1 = list_role.get(i).getRole_name();
                 }
             }
-//            SendEmail sm = new SendEmail();
-//            sm.sendEmail(user);
+            SendEmail sm = new SendEmail();
+            String text = "Don't send your password for every one!!!\nYour password is: "+user.getUser_password();
+            sm.sendEmail(user,text);
             request.setAttribute("user", user);
             request.setAttribute("list_role", list_role);
             request.setAttribute("role", role1);
             request.getRequestDispatcher("userDetail.jsp").forward(request, response);
+        }
         }
     }
 

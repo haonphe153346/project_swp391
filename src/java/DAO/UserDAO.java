@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import model.user;
@@ -133,7 +135,7 @@ public class UserDAO {
         return 0;
     }
 
-    public List<user> getUserBySearch(String search, int page) {
+    public List<user> getUserBySearch(String search) {
         List<user> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
@@ -141,13 +143,11 @@ public class UserDAO {
                     + "where user_fullname like ?\n"
                     + "or user_phone like ?\n"
                     + "or user_email like ?\n"
-                    + "order by [user_id]\n"
-                    + "offset (?-1)*8 row fetch next 8 rows only";
+                    + "order by [user_id]";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, "%" + search + "%");
             ps.setString(2, "%" + search + "%");
             ps.setString(3, "%" + search + "%");
-            ps.setInt(4, page);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 user u = new user(rs.getInt(1), rs.getString(2), rs.getBoolean(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getBoolean(9), rs.getString(10));
@@ -285,8 +285,7 @@ public class UserDAO {
 
     public static void main(String[] args) {
         UserDAO u = new UserDAO();
-        List<user> list = u.getAllUser();
-        System.out.println(list.get(0).getUser_email());
+        System.out.println(u.getUserBySearch("Nguyen").get(0).getUser_id());
     }
 
     public List<user> getAllUser() {
@@ -309,7 +308,7 @@ public class UserDAO {
     static final String regex2 = "(84[3|5|7|8|9])+([0-9]{8})";
 
     public boolean checkPhone(String str) {
-        if (str.matches(regex1)||str.matches(regex2)) {
+        if (str.matches(regex1) || str.matches(regex2)) {
             return true;
         }
         return false;
@@ -327,6 +326,113 @@ public class UserDAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+    public user login(String user_email, String password) {
+        try {
+            String sql = "select * from [user] where user_email = ? and user_password = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, user_email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                user account = new user(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getInt(8), rs.getBoolean(9), rs.getString(10));
+                return account;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(user.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public user checkAccountExit(String username) {
+        try {
+            String sql = "select * from [user] where user_email = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                user account = new user(rs.getInt(1), rs.getString(2), rs.getBoolean(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getInt(8), rs.getBoolean(9), rs.getString(10));
+                return account;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(user.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void register(String username, Boolean gender, String address, String password, String email, String phone) {
+        String sql = "INSERT INTO [dbo].[user]\n"
+                + "           ([user_fullname]\n"
+                + "           ,[user_gender]\n"
+                + "           ,[user_address]\n"
+                + "           ,[user_password]\n"
+                + "           ,[user_email]\n"
+                + "           ,[user_phone]\n"
+                + "           ,[role_id]\n"
+                + "           ,[user_status]\n"
+                + "           ,[user_image])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,4\n"
+                + "           ,0\n"
+                + "           ,null)";
+
+        try {
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setBoolean(2, gender);
+            ps.setString(3, address);
+            ps.setString(4, password);
+            ps.setString(5, email);
+            ps.setString(6, phone);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void changePasword(String user_email, String newpassword) {
+        //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = "UPDATE [dbo].[user] SET[user_password] = ? WHERE user_email = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, newpassword);
+            ps.setString(2, user_email);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+    }
+
+    public user getUserbyEmail(String email) {
+        try {
+            Connection conn = new DBContext().getConnection();
+            String sql = "select * from [user]\n"
+                    + "where user_email = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                user u = new user(rs.getInt(1), rs.getString(2), rs.getBoolean(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getBoolean(9), rs.getString(10));
+                return u;
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
 
 }

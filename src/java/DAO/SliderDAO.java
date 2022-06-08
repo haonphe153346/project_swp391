@@ -19,25 +19,25 @@ import model.slider;
  * @author admin
  */
 public class SliderDAO {
-    public List<slider> getAllSlider() {
-        List<slider> list = new ArrayList<>();
-        try {
-            Connection conn = new DBContext().getConnection();
-            String sql = "select * from slider";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) { 
-                slider sli = new slider(rs.getInt("slider_id"), rs.getString("slider_title"), rs.getInt("category_id"), rs.getBoolean("slider_status"));
-                list.add(sli);
-            }
-            return list;
-        } catch (Exception e) {
-        }
-        return null;
-    }
-    public static void main(String[] args) {
-        SliderDAO ser = new SliderDAO();
-        List<slider> list = ser.getAllSlider();
-        System.out.println(list.get(0).getSlider_title());
-    }
+//    public List<slider> getAllSlider() {
+//        List<slider> list = new ArrayList<>();
+//        try {
+//            Connection conn = new DBContext().getConnection();
+//            String sql = "select * from slider";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) { 
+//                slider sli = new slider(rs.getInt("slider_id"), rs.getString("slider_title"), rs.getInt("category_id"), rs.getBoolean("slider_status"));
+//                list.add(sli);
+//            }
+//            return list;
+//        } catch (Exception e) {
+//        }
+//        return null;
+//    }
+//    public static void main(String[] args) {
+//        SliderDAO ser = new SliderDAO();
+//        List<slider> list = ser.getAllSlider();
+//        System.out.println(list.get(0).getSlider_title());
+//    }
 }

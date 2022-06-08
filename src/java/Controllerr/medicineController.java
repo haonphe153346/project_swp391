@@ -59,10 +59,7 @@ public class medicineController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MedicineDAO m = new MedicineDAO();
-        List<medicine> list_medicine = m.getAllMedicine();
-        request.setAttribute("list", list_medicine);
-        request.getRequestDispatcher("test_hoan.jsp").forward(request, response);
+        response.sendRedirect("userlist");
     }
 
     /**

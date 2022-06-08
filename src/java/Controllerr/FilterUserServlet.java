@@ -71,11 +71,12 @@ public class FilterUserServlet extends HttpServlet {
         }
         List<userRole> list_role = new RoleDAO().getAllRole();
 
-        if (request.getParameter("search") != null) {
-            String search = request.getParameter("search");
-            List<user> list_user = u.getUserBySearch(search, page);
+        if (request.getParameter("txt") != null) {
+            String search = request.getParameter("txt");
+            List<user> list_user = u.getUserBySearch(search);
             request.setAttribute("list_user", list_user);
             request.setAttribute("list_role", list_role);
+            request.setAttribute("txtS", request.getParameter("txt"));
             request.getRequestDispatcher("UserList.jsp").forward(request, response);
         }
         int[] role = null;
@@ -134,7 +135,7 @@ public class FilterUserServlet extends HttpServlet {
         }
         List<user> list_user = u.getUserByFilter(role, status, gender,mess, page);
         int maxPage = u.countTotalUserFilter(role) / 8;
-        if (u.countTotalUserFilter(role) % 8 != 0) {
+        if (u.countTotalUserFilter(role) % 8 != 0 && 8*maxPage < u.countTotalUserFilter(role)) {
             maxPage += 1;
         }
         request.setAttribute("list_user", list_user);
