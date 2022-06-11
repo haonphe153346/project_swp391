@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import model.MyReservation;
+import model.Reservation_Detail;
 import model.RevuBycate;
 
 import model.reservation;
@@ -140,8 +142,64 @@ public class ReservationDAO {
         return null;
     }
 
+    public List<MyReservation> getAllReservationByUserID(int user_id) {
+        List<MyReservation> list = new ArrayList<>();
+        try {
+            Connection conn = new DBContext().getConnection();
+            String sql = "select r.reservation_id,s.service_title,r.created_date,rd.begin_time,rd.num_of_person,r.reservation_status,r.total_price,si.image_link,rd.slot\n" +
+"  from reservation r \n" +
+"  join reservation_detail rd on (r.reservation_id =rd.reservation_id) \n" +
+"  join [service] s on (s.service_id=rd.service_id)\n" +
+"  join [service_image] si on(si.service_id=s.service_id)\n" +
+"  where r.user_id = ? order by r.created_date desc";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, user_id);
+            ResultSet rs = ps.executeQuery();
+            List<Integer> listId = getAllDiffReservation(user_id);
+            for (int i = 0; i < listId.size(); i++) {
+                while (rs.next()) {
+                     MyReservation myR = new MyReservation(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getDate(4), rs.getInt(5), rs.getInt(6), rs.getFloat(7),rs.getString(8),rs.getInt(9));
+                       
+                    if (myR.getReservation_id() == listId.get(i)) {
+                        list.add(myR);
+                        break;
+                    }
+
+                }
+            }
+
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public List<Integer> getAllDiffReservation(int user_id) {
+        List<Integer> list = new ArrayList<>();
+        try {
+            Connection conn = new DBContext().getConnection();
+            String sql = " select DISTINCT reservation.reservation_id from reservation,reservation_detail\n"
+                    + " where reservation.reservation_id=reservation_detail.reservation_id and reservation.user_id = ?\n"
+                    + " group by reservation.reservation_id,reservation_detail.service_id";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, user_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int n = rs.getInt("reservation_id");
+                list.add(n);
+            }
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         ReservationDAO rs = new ReservationDAO();
-        System.out.println(rs.RevenuesByCategoryID().get(1));
+        List<MyReservation> list = rs.getAllReservationByUserID(16);
+        list.get(0).getReservation_id();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getReservation_status());
+        }
     }
 }

@@ -48,6 +48,18 @@
         <servlet-name>UserListController</servlet-name>
         <servlet-class>controller.admin.UserListController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MyReservationController</servlet-name>
+        <servlet-class>controller.reservation.MyReservationController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReservationContactController</servlet-name>
+        <servlet-class>controller.reservation.ReservationContactController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReservationDetailController</servlet-name>
+        <servlet-class>controller.reservation.ReservationDetailController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -151,6 +163,18 @@
     <servlet-mapping>
         <servlet-name>UserListController</servlet-name>
         <url-pattern>/Admin/userlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyReservationController</servlet-name>
+        <url-pattern>/my-reservation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReservationContactController</servlet-name>
+        <url-pattern>/reservation-contact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReservationDetailController</servlet-name>
+        <url-pattern>/reservation-detail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

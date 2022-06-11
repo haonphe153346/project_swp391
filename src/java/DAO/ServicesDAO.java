@@ -91,7 +91,7 @@ public class ServicesDAO extends DBContext {
         }
         return null;
     }
-
+    
     public List<hotservices> getHotServices() {
         List<hotservices> list = new ArrayList<>();
         try {
@@ -111,7 +111,22 @@ public class ServicesDAO extends DBContext {
         }
         return null;
     }
-
+//     public service getServicesByServicesID(int id) {
+//        try {
+//            Connection conn = new DBContext().getConnection();
+//            String sql = "select TOP 3 * from [service] where service_id = ?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            ps.setInt(1, id);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                List<image> listX = getAllIMGbyServiceID(rs.getInt("service_id"));
+//                service ser = new service(rs.getInt("service_id"), rs.getString("service_title"), rs.getString("service_bi"), rs.getDate("service_created_date"), rs.getInt("category_id"), rs.getFloat("service_price"), rs.getFloat("service_discount"), rs.getString("service_detail"), rs.getInt("service_rateStar"), listX);
+//                return ser;
+//            }        
+//        } catch (Exception e) {
+//        }
+//        return null;
+//    }
     public static void main(String[] args) {
         ServicesDAO ser = new ServicesDAO();
         for(int i =0 ;i<ser.getHotServices().size()-1;i++){
