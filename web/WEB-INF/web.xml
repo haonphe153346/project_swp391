@@ -48,6 +48,38 @@
         <servlet-name>UserListController</servlet-name>
         <servlet-class>controller.admin.UserListController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServiceDetailController</servlet-name>
+        <servlet-class>controller.service.ServiceDetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterServiceController</servlet-name>
+        <servlet-class>controller.service.FilterServiceController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>reservationInformationController</servlet-name>
+        <servlet-class>controller.reservationCustomer.reservationInformationController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SettingListController</servlet-name>
+        <servlet-class>controller.admin.SettingListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SettingListControllers</servlet-name>
+        <servlet-class>controller.admin.SettingListControllers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HeaderAdminController</servlet-name>
+        <servlet-class>controller.admin.HeaderAdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Comment_serviceDetail</servlet-name>
+        <servlet-class>controller.service.Comment_serviceDetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommentSubmit</servlet-name>
+        <servlet-class>controller.service.CommentSubmit</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -151,6 +183,38 @@
     <servlet-mapping>
         <servlet-name>UserListController</servlet-name>
         <url-pattern>/Admin/userlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServiceDetailController</servlet-name>
+        <url-pattern>/service-detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterServiceController</servlet-name>
+        <url-pattern>/filter-service</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reservationInformationController</servlet-name>
+        <url-pattern>/reservationinformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SettingListController</servlet-name>
+        <url-pattern>/settinglist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SettingListControllers</servlet-name>
+        <url-pattern>/Admin/setting-list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HeaderAdminController</servlet-name>
+        <url-pattern>/Admin/Header_Admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Comment_serviceDetail</servlet-name>
+        <url-pattern>/commentservicedetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentSubmit</servlet-name>
+        <url-pattern>/commentsubmit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -114,8 +114,65 @@ public class ServicesDAO extends DBContext {
 
     public static void main(String[] args) {
         ServicesDAO ser = new ServicesDAO();
-        for(int i =0 ;i<ser.getHotServices().size()-1;i++){
-            System.out.println(ser.getServicesByServicesID(ser.getHotServices().get(i).getServices_id()).getService_title());
-        }
+        service se = ser.getServiceById(2);
+        System.out.println(se.getService_detail());
     }
+
+    public service getServiceById(int service_id) {
+       List<service> list = new ArrayList<>();
+        try {
+            Connection conn = new DBContext().getConnection();
+            String sql = "select * from [service] where service_id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, service_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                List<image> listService = getAllIMGbyServiceID(rs.getInt("service_id"));
+                service service = new service(rs.getInt("service_id"), 
+                        rs.getString("service_title"), 
+                        rs.getString("service_bi"), 
+                        rs.getDate("service_created_date"), 
+                        rs.getInt("category_id"), 
+                        rs.getFloat("service_price"), 
+                        rs.getFloat("service_discount"), 
+                        rs.getString("service_detail"), 
+                        rs.getInt("service_rateStar"), 
+                        listService);
+                return service;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public List<service> getServiceByIdC(int categoryId) {
+         List<service> list = new ArrayList<>();
+        try {
+            Connection conn = new DBContext().getConnection();
+            String sql = "select * from [service] where category_id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                List<image> listService = getAllIMGbyServiceID(rs.getInt("service_id"));
+                service service = new service(rs.getInt("service_id"), 
+                        rs.getString("service_title"), 
+                        rs.getString("service_bi"), 
+                        rs.getDate("service_created_date"), 
+                        rs.getInt("category_id"), 
+                        rs.getFloat("service_price"), 
+                        rs.getFloat("service_discount"), 
+                        rs.getString("service_detail"), 
+                        rs.getInt("service_rateStar"), 
+                        listService);
+                list.add(service);
+            }
+            return list;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+   
 }

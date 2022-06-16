@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
+
 import context.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,12 +14,12 @@ import java.util.List;
 import model.category;
 import model.service;
 
-
 /**
  *
  * @author win
  */
 public class CategoryDAO {
+
     public List<category> getAllCategory() {
         List<category> list = new ArrayList<>();
         try {
@@ -27,14 +28,15 @@ public class CategoryDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                 category cate = new category(rs.getInt("category_id"), rs.getString("category_name"), rs.getString("icon"));
-                 list.add(cate);
+                category cate = new category(rs.getInt("category_id"), rs.getString("category_name"), rs.getString("icon"));
+                list.add(cate);
             }
             return list;
         } catch (Exception e) {
         }
         return null;
     }
+
     public static void main(String[] args) {
         CategoryDAO ser = new CategoryDAO();
         List<category> list = ser.getAllCategory();

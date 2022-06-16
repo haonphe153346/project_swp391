@@ -283,11 +283,6 @@ public class UserDAO {
         return 0;
     }
 
-    public static void main(String[] args) {
-        UserDAO u = new UserDAO();
-        System.out.println(u.getUserBySearch("Nguyen").get(0).getUser_id());
-    }
-
     public List<user> getAllUser() {
         List<user> list = new ArrayList<>();
         try {
@@ -435,4 +430,8 @@ public class UserDAO {
         return null;
     }
 
+//     public static void main(String[] args) {
+//        UserDAO u = new UserDAO();
+//        System.out.println(u.getUserReservationByUserId().get(0));
+//    }
 }

@@ -15,13 +15,45 @@
                     <c:if test="${sessionScope.admin != null}">
                     <li><a class="nav-link scrollto" href="/project_swp391/Admin/AdminDashBoard">Admin</a></li>
                     </c:if>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto" href="#hotservices">Hot Services</a></li>
-                <li><a class="nav-link scrollto" href="#blogs">Blogs</a></li>
-                <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-                <li><a class="nav-link scrollto" href="feedback.jsp">Feedback</a></li>
-                    <c:if test="${sessionScope.account.user_id != null || sessionScope.admin.user_id != null}">
+
+                <!--            <li><a class="nav-link scrollto" href="#about">About</a></li>  
+                                <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                                <li><a class="nav-link scrollto" href="#hotservices">Hot Services</a></li>
+                                <li><a class="nav-link scrollto" href="#blogs">Blogs</a></li>
+                                <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+                                <li><a class="nav-link scrollto" href="feedback.jsp">Feedback</a></li>-->
+
+
+
+                <c:if test="${sessionScope.listSetting != null}">
+                    <c:if test="${sessionScope.listSetting.get(0).setting_status==true}">
+                        <li><a class="nav-link scrollto" href="#about">About</a></li>  
+                        </c:if>
+                        <c:if test="${sessionScope.listSetting.get(1).setting_status==true}">
+                        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.listSetting.get(2).setting_status==true}">
+                        <li><a class="nav-link scrollto" href="#hotservices">Hot Services</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.listSetting.get(3).setting_status==true}">
+                        <li><a class="nav-link scrollto" href="#blogs">Blogs</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.listSetting.get(4).setting_status==true}">
+                        <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.listSetting.get(5).setting_status==true}">
+                        <li><a class="nav-link scrollto" href="feedback.jsp">Feedback</a></li>
+                        </c:if>
+                    </c:if>
+
+
+               
+
+
+
+
+
+                <c:if test="${sessionScope.account.user_id != null || sessionScope.admin.user_id != null}">
                     <li class="dropdown"><a href="#"><span>User Manager</span><i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="user_profile">Edit profile</a></li>

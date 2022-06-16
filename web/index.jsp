@@ -660,7 +660,46 @@
         <jsp:include page="assets/module/header.jsp" flush="true"/>
         <!-- End Header -->
 
-<!--         ======= Hero Slider Section ======= 
+        <!--         ======= Hero Slider Section ======= 
+                <section id="hero-slider" class="hero-slider">
+                    <div class="container-md" data-aos="fade-in">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="swiper sliderFeaturedPosts">
+                                    <div class="swiper-wrapper">
+        <c:forEach items="${sliderList}" var="slide">
+            <div class="swiper-slide">
+                
+                    <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/blog/${slider.image.get(0).image_link}');">
+                
+            
+                <div class="img-bg-inner">
+                    <h2>${slide.service_title}</h2>
+                    <p>
+            ${slide.services_bi}
+        </p></div>
+</a>
+</div>
+        </c:forEach>
+        
+
+        
+    </div>
+    <div class="custom-swiper-button-next">
+        <span class="bi-chevron-right"></span>
+    </div>
+    <div class="custom-swiper-button-prev">
+        <span class="bi-chevron-left"></span>
+    </div>
+
+    <div class="swiper-pagination"></div>
+</div>
+</div>
+</div>
+</div>
+</section> End Hero Slider Section -->
+
+        <!-- ======= Hero Slider Section ======= -->
         <section id="hero-slider" class="hero-slider">
             <div class="container-md" data-aos="fade-in">
                 <div class="row">
@@ -669,21 +708,17 @@
                             <div class="swiper-wrapper">
                                 <c:forEach items="${sliderList}" var="slide">
                                     <div class="swiper-slide">
-                                        
-                                            <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/blog/${slider.image.get(0).image_link}');">
-                                        
-                                    
-                                        <div class="img-bg-inner">
-                                            <h2>${slide.service_title}</h2>
-                                            <p>
-                                                ${slide.services_bi}
-                                            </p></div>
-                                    </a>
-                                </div>
-                                </c:forEach>
-                                
+                                        <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/${slide.image.get(0).getImage_link()}');">
+                                            <div class="img-bg-inner">
+                                                <h2>${slide.service_title}</h2>
+                                                <p>${slide.services_bi}</p>
+                                            </div>
+                                        </a>
+                                    </div>
 
-                                
+                                </c:forEach>
+
+
                             </div>
                             <div class="custom-swiper-button-next">
                                 <span class="bi-chevron-right"></span>
@@ -697,42 +732,7 @@
                     </div>
                 </div>
             </div>
-        </section> End Hero Slider Section -->
-
-<!-- ======= Hero Slider Section ======= -->
-    <section id="hero-slider" class="hero-slider">
-      <div class="container-md" data-aos="fade-in">
-        <div class="row">
-          <div class="col-12">
-            <div class="swiper sliderFeaturedPosts">
-              <div class="swiper-wrapper">
-                  <c:forEach items="${sliderList}" var="slide">
-                      <div class="swiper-slide">
-                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/${slide.image.get(0).getImage_link()}');">
-                    <div class="img-bg-inner">
-                      <h2>${slide.service_title}</h2>
-                      <p>${slide.services_bi}</p>
-                    </div>
-                  </a>
-                </div>
-
-                  </c:forEach>
-                
-               
-              </div>
-              <div class="custom-swiper-button-next">
-                <span class="bi-chevron-right"></span>
-              </div>
-              <div class="custom-swiper-button-prev">
-                <span class="bi-chevron-left"></span>
-              </div>
-
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- End Hero Slider Section -->
+        </section><!-- End Hero Slider Section -->
 
         <main id="main">
 
@@ -818,81 +818,101 @@
                 </div>
             </section><!-- End Counts Section -->
             <!-- ======= Features Section ======= -->
-            <section id="services" class="features">
-                <div class="container" data-aos="fade-up">
-                    <div class="section-title">
-                        <h2>All Services</h2>
-                        <p>There are many servies in Children's Care, Choose Your Category To See</p>
+
+
+
+            
+            
+
+
+
+            <c:if test="${listSetting.get(0).setting_status==true}">
+
+                <section id="services" class="features">
+                    <div class="container" data-aos="fade-up">
+                        <div class="section-title">
+                            <h2>All Services</h2>
+                            <p>There are many servies in Children's Care, Choose Your Category To See</p>
+                        </div>
+                        <ul class="nav nav-tabs row gy-4 d-flex">
+
+                            <c:forEach items="${requestScope.categoryList}" var="cate">
+
+                                <li class="nav-item col-6 col-md-4 col-lg-2">
+                                    <a  class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-${cate.category_id}" href="index?cid=${cate.category_id}">
+
+                                        <i class="${cate.icon}"></i>
+                                        <h4>${cate.category_name}</h4>
+                                    </a>
+                                </li><!-- End Tab 1 Nav -->
+                            </c:forEach>
+
+
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <c:forEach items="${requestScope.list}" var="servicee">
+                                <c:forEach items="${servicee}" var="service">
+                                    <div class="tab-pane" id="tab-${service.category_id}">
+                                        <div class="row gy-4">
+                                            <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+                                                </br>
+                                                <center>
+                                                    <h3>${service.service_title}</h3>
+                                                </center>
+                                                </br>
+
+                                                <p>
+                                                    ${service.services_bi}
+                                                </p>
+                                                <p class="fst-italic">
+
+                                                    Discount Price: ${service.service_discount}$
+                                                </p>
+                                                <p>
+                                                <h5>
+
+                                                </h5>
+                                                Old Price: ${service.service_price}$
+                                                </p>
+                                                Rate Star: ${service.service_rateStar} <i class="bi bi-star-fill"></i>
+                                                <!--                                    <ul>
+                                                                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">ĐAU MẮT ĐỎ</a></li>
+                                                                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">ĐAU GIÁC MẠC </a></li>
+                                                                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">VIÊM MẮT</a></li>
+                                                                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">MẮT SƯNG</a></li>
+                                                                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">More...</a></li>
+                                                
+                                                                                    </ul>-->
+                                                <div class="text-center mt-auto">
+                                                    <a href="service-detail?service_id=${service.service_id}" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                                                <img src="assets/img/${service.image.get(0).getImage_link()}" alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div><!-- End Tab Content 1 -->
+                                </c:forEach>
+                            </c:forEach>
+
+                        </div>
+
                     </div>
-                    <ul class="nav nav-tabs row gy-4 d-flex">
-                        
-                        <c:forEach items="${requestScope.categoryList}" var="cate">
-                            
-                            <li class="nav-item col-6 col-md-4 col-lg-2">
-                            <a  class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-${cate.category_id}" href="index?cid=${cate.category_id}">
-                                
-                                <i class="${cate.icon}"></i>
-                                <h4>${cate.category_name}</h4>
-                            </a>
-                            </li><!-- End Tab 1 Nav -->
-                        </c:forEach>
-                       
+                </section><!-- End Features Section -->
+            </c:if>
 
-                    </ul>
 
-                    <div class="tab-content">
-                        
-                        <c:forEach items="${requestScope.list}" var="servicee">
-                            <c:forEach items="${servicee}" var="service">
-                            <div class="tab-pane" id="tab-${service.category_id}">
-                            <div class="row gy-4">
-                                <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-                                    </br>
-                                    <center>
-                                        <h3>${service.service_title}</h3>
-                                    </center>
-                                    </br>
 
-                                    <p>
-                                        ${service.services_bi}
-                                    </p>
-                                    <p class="fst-italic">
-                                        
-                                         Discount Price: ${service.service_discount}$
-                                    </p>
-                                    <p>
-                                    <h5>
-                                       
-                                    </h5>
-                                    Old Price: ${service.service_price}$
-                                    </p>
-                                    Rate Star: ${service.service_rateStar} <i class="bi bi-star-fill"></i>
-<!--                                    <ul>
-                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">ĐAU MẮT ĐỎ</a></li>
-                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">ĐAU GIÁC MẠC </a></li>
-                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">VIÊM MẮT</a></li>
-                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">MẮT SƯNG</a></li>
-                                        <li><i class="bi bi-check-circle-fill"></i><a href="service-single">More...</a></li>
 
-                                    </ul>-->
-                                    <div class="text-center mt-auto">
-                                        <a href="#" class="buy-btn"><h5>MORE DETAILS ...</h5></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                                    <img src="assets/img/${service.image.get(0).getImage_link()}" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div><!-- End Tab Content 1 -->
-                        </c:forEach>
-                        </c:forEach>
-                        
-                    </div>
+                
+                
+                
 
-                </div>
-            </section><!-- End Features Section -->
 
             <!-- ======= Pricing Section ======= -->
+                        <c:if test="${listSetting.get(2).setting_status==true}">
             <section id="hotservices" class="pricing">
                 <div class="container" data-aos="fade-up">
 
@@ -904,30 +924,30 @@
                     <div class="row gy-4">
                         <c:forEach items="${ListHotService}" var="hots">
                             <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="pricing-item">
+                                <div class="pricing-item">
 
-                                <div class="pricing-header">
-                                    <h3>${hots.service_title}</h3>
-                                    </br>
-                                    <h4><sup>$</sup>${hots.service_price}<span>  3̶̶9̶̶9̶$</span></h4>
-                                </div>
+                                    <div class="pricing-header">
+                                        <h3>${hots.service_title}</h3>
+                                        </br>
+                                        <h4><sup>$</sup>${hots.service_price}<span>  3̶̶9̶̶9̶$</span></h4>
+                                    </div>
 
                                     <center>
                                         <p>${hots.services_bi}</p>
                                     </center>
                                     </br>
-                                <center>${hots.service_rateStar} <i class="bi bi-star-fill"></i></center>
-                                </br>
-                                </br>
-                                <div class="text-center mt-auto">
-                                    <a href="#" class="buy-btn">Buy Now</a>
-                                </div>
+                                    <center>${hots.service_rateStar} <i class="bi bi-star-fill"></i></center>
+                                    </br>
+                                    </br>
+                                    <div class="text-center mt-auto">
+                                        <a href="#" class="buy-btn">Buy Now</a>
+                                    </div>
 
-                            </div>
-                        </div><!-- End Pricing Item -->
+                                </div>
+                            </div><!-- End Pricing Item -->
                         </c:forEach>
-                        
-                       
+
+
 
 
 
@@ -935,9 +955,11 @@
 
                 </div>
             </section><!-- End Pricing Section -->
-
+                        </c:if>
 
             <!-- ======= Recent Blog Posts Section ======= -->
+                        <c:if test="${listSetting.get(3).setting_status==true}">
+
             <section id="blogs" class="recent-blog-posts">
 
                 <div class="container" data-aos="fade-up">
@@ -950,23 +972,23 @@
                     <div class="row">
                         <c:forEach items="${requestScope.blogList}" var="blog">
                             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="post-box">
-                                <div class="post-img"><img src="./resouce/image/${blog.blog_image}" class="img-fluid" alt=""></div>
-                                <div class="meta">
-                                    <span class="post-date">${blog.blog_created_date}</span>
-                                    <span class="post-author"> / ${blog.user_id}</span>
+                                <div class="post-box">
+                                    <div class="post-img"><img src="./resouce/image/${blog.blog_image}" class="img-fluid" alt=""></div>
+                                    <div class="meta">
+                                        <span class="post-date">${blog.blog_created_date}</span>
+                                        <span class="post-author"> / ${blog.user_id}</span>
+                                    </div>
+                                    <h4 class="post-title">${blog.title}</h4>
+                                    <p>${blog.bi}</p>
+                                    <!--                                <a  class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>-->
                                 </div>
-                                <h4 class="post-title">${blog.title}</h4>
-                                <p>${blog.bi}</p>
-<!--                                <a  class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>-->
                             </div>
-                        </div>
-                        <br>
-                        
+                            <br>
+
                         </c:forEach>
-                        
-                        
-                       
+
+
+
 
                     </div>
 
@@ -979,9 +1001,12 @@
                 </div>
             </section><!-- End Recent Blog Posts Section -->
 
-
+                        </c:if>
 
             <!-- ======= Doctors Section ======= -->
+            
+                        <c:if test="${listSetting.get(4).setting_status==true}">
+
             <section id="doctors" class="doctors">
                 <div class="container">
 
@@ -1065,12 +1090,14 @@
                 </div>
             </section><!-- End Doctors Section -->
 
-
+                        </c:if>
 
 
 
 
             <!-- ======= Testimonials Section ======= -->
+                        <c:if test="${listSetting.get(5).setting_status==true}">
+
             <section id="testimonials" class="testimonials">
                 <div class="container">
                     <div class="container">
@@ -1165,7 +1192,8 @@
 
                 </div>
             </section><!-- End Testimonials Section -->
-
+                        </c:if>
+            
             <!-- ======= Team Section ======= -->
             <section id="team" class="team section-bg">
                 <div class="container">
