@@ -16,7 +16,7 @@
                     <li><a class="nav-link scrollto" href="/project_swp391/Admin/AdminDashBoard">Admin</a></li>
                     </c:if>
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="servicelist">Services</a></li>
                 <li><a class="nav-link scrollto" href="#hotservices">Hot Services</a></li>
                 <li><a class="nav-link scrollto" href="#blogs">Blogs</a></li>
                 <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
@@ -55,6 +55,16 @@
                     <p>Login</p></a>
                 </c:otherwise>
             </c:choose>
+        <a class="me-3" href="carts" >
+                <i style="font-size: 30px;color:grey;" class="fas fa-shopping-cart"></i>
+                <span id="cart-number" class="position-absolute bottom-50 start-99 translate-middle badge rounded-pill bg-danger">
+                    <c:choose>
+                        <c:when test="${sessionScope.carts.size() != null}">${sessionScope.carts.size()}</c:when>
+                        <c:otherwise>0</c:otherwise>
+                    </c:choose>
+                        <span  class="visually-hidden">Cart item</span>
+                </span>
+            </a>
     </div>
 </header>
 

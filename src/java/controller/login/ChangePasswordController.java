@@ -37,7 +37,7 @@ public class ChangePasswordController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
 
             HttpSession sessionchangepass = request.getSession();
-
+// cmt abv
             String username = request.getParameter("username");
             String oldpassword = request.getParameter("oldpassword");
             String newpassword = request.getParameter("newpassword");

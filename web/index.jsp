@@ -638,7 +638,7 @@
         ======================================================== -->
     </head>
 
-    <body style="padding: 80px" >
+    <body style="margin-top: 80px" >
 
         <!-- ======= Top Bar ======= -->
         <div id="topbar" class="d-flex align-items-center fixed-top" >
@@ -658,10 +658,10 @@
 
         <!-- ======= Header ======= -->
         <jsp:include page="assets/module/header.jsp" flush="true"/>
-        <!-- End Header -->
+         End Header 
 
-<!--         ======= Hero Slider Section ======= 
-        <section id="hero-slider" class="hero-slider">
+         ======= Hero Slider Section ======= 
+<!--        <section id="hero-slider" class="hero-slider">
             <div class="container-md" data-aos="fade-in">
                 <div class="row">
                     <div class="col-12">
@@ -708,8 +708,8 @@
               <div class="swiper-wrapper">
                   <c:forEach items="${sliderList}" var="slide">
                       <div class="swiper-slide">
-                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/${slide.image.get(0).getImage_link()}');">
-                    <div class="img-bg-inner">
+                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('resouce/image/service/${slide.image.get(0).getImage_link()}');">
+                      <div class="img-bg-inner " style="color: white">
                       <h2>${slide.service_title}</h2>
                       <p>${slide.services_bi}</p>
                     </div>

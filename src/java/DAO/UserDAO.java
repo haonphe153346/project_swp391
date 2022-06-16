@@ -140,14 +140,25 @@ public class UserDAO {
         try {
             Connection conn = new DBContext().getConnection();
             String sql = "select * from [user]\n"
-                    + "where user_fullname like ?\n"
-                    + "or user_phone like ?\n"
-                    + "or user_email like ?\n"
-                    + "order by [user_id]";
+                    + "where\n"
+                    + "CONTAINS(user_email,?)\n"
+                    + "or\n"
+                    + "CONTAINS(user_fullname,?)\n"
+                    + "or\n"
+                    + "CONTAINS(user_phone,?)\n"
+                    + "or\n"
+                    + "freetext(user_email,?)\n"
+                    + "or\n"
+                    + "freetext(user_fullname,?)\n"
+                    + "or\n"
+                    + "freetext(user_phone,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, "%" + search + "%");
-            ps.setString(2, "%" + search + "%");
-            ps.setString(3, "%" + search + "%");
+            ps.setString(1, "\"" + search + "*\"");
+            ps.setString(2, "\"" + search + "*\"");
+            ps.setString(3, "\"" + search + "*\"");
+            ps.setString(4, "\"" + search + "*\"");
+            ps.setString(5, "\"" + search + "*\"");
+            ps.setString(6, "\"" + search + "*\"");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 user u = new user(rs.getInt(1), rs.getString(2), rs.getBoolean(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getBoolean(9), rs.getString(10));
@@ -285,7 +296,9 @@ public class UserDAO {
 
     public static void main(String[] args) {
         UserDAO u = new UserDAO();
-        System.out.println(u.getUserBySearch("Nguyen").get(0).getUser_id());
+        for (int i = 0; i < u.getUserBySearch("hoan").size(); i++) {
+            System.out.println(i);
+        }
     }
 
     public List<user> getAllUser() {

@@ -38,6 +38,6 @@ public class CategoryDAO {
     public static void main(String[] args) {
         CategoryDAO ser = new CategoryDAO();
         List<category> list = ser.getAllCategory();
-        System.out.println(list.get(0).getIcon());
+        System.out.println(list.get(0).getCategory_id());
     }
 }

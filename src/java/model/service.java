@@ -22,14 +22,13 @@ public class service {
     private float service_discount;
     private String service_detail;
     public int service_rateStar;
+    private int service_vote;
     public List<image> image;
-    
-    
 
     public service() {
     }
 
-    public service(int service_id, String service_title, String services_bi, Date service_created_date, int category_id, float service_price, float service_discount, String service_detail, int service_rateStar, List<image> image) {
+    public service(int service_id, String service_title, String services_bi, Date service_created_date, int category_id, float service_price, float service_discount, String service_detail, int service_rateStar, int service_vote, List<image> image) {
         this.service_id = service_id;
         this.service_title = service_title;
         this.services_bi = services_bi;
@@ -39,6 +38,7 @@ public class service {
         this.service_discount = service_discount;
         this.service_detail = service_detail;
         this.service_rateStar = service_rateStar;
+        this.service_vote = service_vote;
         this.image = image;
     }
 
@@ -114,6 +114,14 @@ public class service {
         this.service_rateStar = service_rateStar;
     }
 
+    public int getService_vote() {
+        return service_vote;
+    }
+
+    public void setService_vote(int service_vote) {
+        this.service_vote = service_vote;
+    }
+
     public List<image> getImage() {
         return image;
     }
@@ -121,4 +129,6 @@ public class service {
     public void setImage(List<image> image) {
         this.image = image;
     }
+    
+    
 }
